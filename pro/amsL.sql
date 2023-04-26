@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 11:26 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Apr 26, 2023 at 11:01 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -376,6 +376,7 @@ INSERT INTO `roles` (`ID`, `Name`) VALUES
 
 CREATE TABLE `saffevent` (
   `EventId` int(11) NOT NULL,
+  `name` varchar(70) NOT NULL,
   `PlaceId` int(11) NOT NULL,
   `Date` int(11) NOT NULL,
   `NumberOfAttendence` int(11) NOT NULL,
@@ -399,6 +400,14 @@ CREATE TABLE `staff` (
   `Age` int(11) NOT NULL,
   `PhoneNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Password`, `Age`, `PhoneNumber`) VALUES
+(1, 'mariam', 'saad', 'mariam20', 'mariam20', '2020', 20, 34444),
+(2, 'staff', 'mmm', 'staff20', 'staff', 'staff20', 20, 34444);
 
 -- --------------------------------------------------------
 
@@ -779,7 +788,7 @@ ALTER TABLE `saffevent`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stafffaculty news`
@@ -813,7 +822,7 @@ ALTER TABLE `student`
 -- Constraints for table `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`id`);
+  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`ID`);
 
 --
 -- Constraints for table `administrator_mentorship program`
@@ -847,7 +856,7 @@ ALTER TABLE `admin_donations`
 -- Constraints for table `admin_events`
 --
 ALTER TABLE `admin_events`
-  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`id`),
+  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`ID`),
   ADD CONSTRAINT `admin_events_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
@@ -874,7 +883,7 @@ ALTER TABLE `communication`
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
 
 --
 -- Constraints for table `event_request`
@@ -911,7 +920,7 @@ ALTER TABLE `job_posts_pictures`
 -- Constraints for table `mentorshipprogram`
 --
 ALTER TABLE `mentorshipprogram`
-  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
+  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
 
 --
 -- Constraints for table `requesttomentorship`
