@@ -1,0 +1,79 @@
+table {
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    background-color: #F5F5F5;
+    color: #000;
+    border-color: #000;
+  }
+  
+  th {
+    background-color: #7a6ad8;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-right:77pc;
+    margin-top:50px;
+    margin-bottom: 2px;
+   
+  }
+  
+  .search-container input[type="text"] {
+    width: 250px;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 16px;
+    outline: none;
+   
+  }
+  
+  .search-container .search-icon {
+    margin-left: -30px;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .search-container .search-icon:hover {
+    color: #000;
+  }
+  
+  .action-button {
+    background-color: transparent;
+    color: #ccc;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .action-button:hover {
+    color: #000;
+  }
+  
+  .edit-icon:before {
+    content: "\f040";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+  }
+  
+  .delete-icon:before {
+    content: "\f1f8";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+  }
