@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 11:01 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 27, 2023 at 06:52 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -137,7 +137,8 @@ CREATE TABLE `alumni` (
 --
 
 INSERT INTO `alumni` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
-(1, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '0000-00-00', '1234', '01094764271', 'Software engineer');
+(1, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '0000-00-00', '1234', '01094764271', 'Software engineer'),
+(2, 'mariam', '', 'mariaamali88@gmail.com', 'asas', '2023-03-31', '78787', '7895201', 'engineer');
 
 -- --------------------------------------------------------
 
@@ -158,8 +159,11 @@ CREATE TABLE `alumni_donation` (
 --
 
 CREATE TABLE `communication` (
-  `AlumniId` int(11) NOT NULL,
-  `Content` varchar(50) NOT NULL
+  `ID` int(11) NOT NULL,
+  `email_to` varchar(50) NOT NULL,
+  `email_from` varchar(50) NOT NULL,
+  `content` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -225,6 +229,19 @@ CREATE TABLE `faq` (
   `Questions` text NOT NULL,
   `Answers` text NOT NULL,
   `AdminId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `ID` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `content` int(11) NOT NULL,
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -556,7 +573,7 @@ ALTER TABLE `alumni_donation`
 -- Indexes for table `communication`
 --
 ALTER TABLE `communication`
-  ADD KEY `Alumni_id` (`AlumniId`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `donation_posts`
@@ -716,7 +733,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `communication`
+--
+ALTER TABLE `communication`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -872,12 +895,6 @@ ALTER TABLE `admin_faculty_news_posts`
 ALTER TABLE `alumni_donation`
   ADD CONSTRAINT `alumni_donation_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`),
   ADD CONSTRAINT `alumni_donation_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
-
---
--- Constraints for table `communication`
---
-ALTER TABLE `communication`
-  ADD CONSTRAINT `communication_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
 
 --
 -- Constraints for table `events`
