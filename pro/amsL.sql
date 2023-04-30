@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 04:42 PM
+-- Generation Time: Apr 25, 2023 at 11:26 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -137,8 +137,7 @@ CREATE TABLE `alumni` (
 --
 
 INSERT INTO `alumni` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
-(1, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '0000-00-00', '1234', '01094764271', 'Software engineer'),
-(2, 'mariam', '', 'mariaamali88@gmail.com', 'asas', '2023-03-31', '78787', '7895201', 'engineerrr');
+(1, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '0000-00-00', '1234', '01094764271', 'Software engineer');
 
 -- --------------------------------------------------------
 
@@ -159,40 +158,9 @@ CREATE TABLE `alumni_donation` (
 --
 
 CREATE TABLE `communication` (
-  `ID` int(11) NOT NULL,
-  `email_to` varchar(50) NOT NULL,
-  `email_from` varchar(50) NOT NULL,
-  `content` varchar(50) NOT NULL,
-  `role` varchar(50) NOT NULL
+  `AlumniId` int(11) NOT NULL,
+  `Content` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `communication`
---
-
-INSERT INTO `communication` (`ID`, `email_to`, `email_from`, `content`, `role`) VALUES
-(1, 'menna@gmail.com', 'mariamali88@gmail.com', '', 'alumni'),
-(2, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(3, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(4, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(5, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(6, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(7, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(8, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(9, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(10, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(11, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(12, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(13, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(14, 'y@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(15, 'y@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(16, 'menna', 'mariam', 'hello', 'alumni'),
-(17, 'mariam', 'mariam', 'hi', 'alumni'),
-(18, 'mariam', 'soha', 'hello', 'alumni'),
-(19, 'menna', 'mariam', 'hi', 'student'),
-(20, 'amal', 'mariam', 'hello', 'alumni'),
-(21, 'menna', 'mariam', 'hello', 'alumni'),
-(22, 'mariam', 'menna', 'hello', 'alumni');
 
 -- --------------------------------------------------------
 
@@ -258,38 +226,6 @@ CREATE TABLE `faq` (
   `Answers` text NOT NULL,
   `AdminId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
-
-CREATE TABLE `feedback` (
-  `ID` int(11) NOT NULL,
-  `name` varchar(11) NOT NULL,
-  `content` varchar(11) NOT NULL,
-  `role` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`ID`, `name`, `content`, `role`) VALUES
-(1, '0', '0', '0'),
-(2, 'mariam', 'very good', 'alumni'),
-(3, 'marrrrriam', 'very good', 'alumni'),
-(4, 'marrrrriam', 'very good', 'alumni'),
-(5, 'marrrrriam', 'very good', 'alumni'),
-(6, 'mariam ali', 'goo', 'alumni'),
-(7, 'mariam ali', 'goo', 'alumni'),
-(8, 'mariaamali8', 'goo', 'alumni'),
-(9, 'mariaamali8', 'goo', 'alumni'),
-(10, 'mariaamali8', 'goo', 'alumni'),
-(11, 'mariam', 'good', 'alumni'),
-(12, 'menna', 'very good', 'alumni'),
-(13, 'mariam', 'good', 'alumni');
 
 -- --------------------------------------------------------
 
@@ -440,7 +376,6 @@ INSERT INTO `roles` (`ID`, `Name`) VALUES
 
 CREATE TABLE `saffevent` (
   `EventId` int(11) NOT NULL,
-  `name` varchar(70) NOT NULL,
   `PlaceId` int(11) NOT NULL,
   `Date` int(11) NOT NULL,
   `NumberOfAttendence` int(11) NOT NULL,
@@ -464,14 +399,6 @@ CREATE TABLE `staff` (
   `Age` int(11) NOT NULL,
   `PhoneNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Password`, `Age`, `PhoneNumber`) VALUES
-(1, 'mariam', 'saad', 'mariam20', 'mariam20', '2020', 20, 34444),
-(2, 'staff', 'mmm', 'staff20', 'staff', 'staff20', 20, 34444);
 
 -- --------------------------------------------------------
 
@@ -543,20 +470,6 @@ INSERT INTO `student` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `Birth
 (1, 'Marwan', 'Ali', 'marwan3', 'marwan@gmail.com', '1985-05-10', '1234', '123456', 'frontend developer'),
 (2, 'Marwan', 'Ali', 'marwan@gmail', '33-madinaty', '2003-03-30', '1234', '01615651', 'frontend developer'),
 (3, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '2004-01-25', '1234', '01094764271', 'Software engineer');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `survey`
---
-
-CREATE TABLE `survey` (
-  `ID` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `content` varchar(50) NOT NULL,
-  `rate` int(11) NOT NULL,
-  `role` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -634,7 +547,7 @@ ALTER TABLE `alumni_donation`
 -- Indexes for table `communication`
 --
 ALTER TABLE `communication`
-  ADD PRIMARY KEY (`ID`);
+  ADD KEY `Alumni_id` (`AlumniId`);
 
 --
 -- Indexes for table `donation_posts`
@@ -667,12 +580,6 @@ ALTER TABLE `faculty_news_posts`
 --
 ALTER TABLE `faq`
   ADD KEY `admin_id` (`AdminId`);
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `gallery`
@@ -781,12 +688,6 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `survey`
---
-ALTER TABLE `survey`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -806,13 +707,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `communication`
---
-ALTER TABLE `communication`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -825,12 +720,6 @@ ALTER TABLE `events`
 --
 ALTER TABLE `event_request`
   MODIFY `RequestId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -890,7 +779,7 @@ ALTER TABLE `saffevent`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stafffaculty news`
@@ -917,12 +806,6 @@ ALTER TABLE `student`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `survey`
---
-ALTER TABLE `survey`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -930,7 +813,7 @@ ALTER TABLE `survey`
 -- Constraints for table `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`ID`);
+  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`id`);
 
 --
 -- Constraints for table `administrator_mentorship program`
@@ -964,7 +847,7 @@ ALTER TABLE `admin_donations`
 -- Constraints for table `admin_events`
 --
 ALTER TABLE `admin_events`
-  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`ID`),
+  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`id`),
   ADD CONSTRAINT `admin_events_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
@@ -982,10 +865,16 @@ ALTER TABLE `alumni_donation`
   ADD CONSTRAINT `alumni_donation_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
+-- Constraints for table `communication`
+--
+ALTER TABLE `communication`
+  ADD CONSTRAINT `communication_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
+
+--
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
 
 --
 -- Constraints for table `event_request`
@@ -1022,7 +911,7 @@ ALTER TABLE `job_posts_pictures`
 -- Constraints for table `mentorshipprogram`
 --
 ALTER TABLE `mentorshipprogram`
-  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
+  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
 
 --
 -- Constraints for table `requesttomentorship`
