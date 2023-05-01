@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2023 at 11:26 PM
+-- Generation Time: May 01, 2023 at 02:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -48,6 +48,13 @@ CREATE TABLE `admin` (
   `Password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES
+(1, 'amal', 'ali', 'amal@gmail.com', '1234');
+
 -- --------------------------------------------------------
 
 --
@@ -79,17 +86,6 @@ CREATE TABLE `admin_accounts` (
 CREATE TABLE `admin_alumni` (
   `AlumniId` int(11) NOT NULL,
   `AdminId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_donations`
---
-
-CREATE TABLE `admin_donations` (
-  `AdminId` int(11) NOT NULL,
-  `DonationPostId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -142,18 +138,6 @@ INSERT INTO `alumni` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthD
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alumni_donation`
---
-
-CREATE TABLE `alumni_donation` (
-  `AlumniId` int(11) NOT NULL,
-  `Amount` int(11) NOT NULL,
-  `AdminId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `communication`
 --
 
@@ -165,14 +149,13 @@ CREATE TABLE `communication` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `donation_posts`
+-- Table structure for table `donation`
 --
 
-CREATE TABLE `donation_posts` (
+CREATE TABLE `donation` (
   `ID` int(11) NOT NULL,
-  `Title` varchar(255) DEFAULT NULL,
-  `Description` text DEFAULT NULL,
-  `CreatedAt` date NOT NULL
+  `alumni_email` int(11) NOT NULL,
+  `Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -227,6 +210,14 @@ CREATE TABLE `faq` (
   `AdminId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `faq`
+--
+
+INSERT INTO `faq` (`Questions`, `Answers`, `AdminId`) VALUES
+('how are you?', 'fine', 1),
+('what is your feedback?', 'very good', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -264,9 +255,10 @@ CREATE TABLE `it_support` (
 --
 
 CREATE TABLE `it_support_emails` (
-  `EmailId` int(11) NOT NULL,
-  `AlumniId` int(11) NOT NULL,
-  `Description` varchar(50) NOT NULL
+  `ID` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `issue` int(11) NOT NULL,
+  `it_reply` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -510,13 +502,6 @@ ALTER TABLE `admin_alumni`
   ADD KEY `Alumni_id` (`AlumniId`);
 
 --
--- Indexes for table `admin_donations`
---
-ALTER TABLE `admin_donations`
-  ADD PRIMARY KEY (`AdminId`,`DonationPostId`),
-  ADD KEY `donation_post_id` (`DonationPostId`);
-
---
 -- Indexes for table `admin_events`
 --
 ALTER TABLE `admin_events`
@@ -537,22 +522,15 @@ ALTER TABLE `alumni`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `alumni_donation`
---
-ALTER TABLE `alumni_donation`
-  ADD KEY `Alumni_id` (`AlumniId`),
-  ADD KEY `Admin_id` (`AdminId`);
-
---
 -- Indexes for table `communication`
 --
 ALTER TABLE `communication`
   ADD KEY `Alumni_id` (`AlumniId`);
 
 --
--- Indexes for table `donation_posts`
+-- Indexes for table `donation`
 --
-ALTER TABLE `donation_posts`
+ALTER TABLE `donation`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -598,8 +576,7 @@ ALTER TABLE `it_support`
 -- Indexes for table `it_support_emails`
 --
 ALTER TABLE `it_support_emails`
-  ADD PRIMARY KEY (`EmailId`),
-  ADD KEY `Alumni_id` (`AlumniId`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `job_posts`
@@ -701,13 +678,19 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `donation`
+--
+ALTER TABLE `donation`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -731,7 +714,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `it_support_emails`
 --
 ALTER TABLE `it_support_emails`
-  MODIFY `EmailId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `job_posts`
@@ -813,7 +796,7 @@ ALTER TABLE `student`
 -- Constraints for table `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`id`);
+  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`ID`);
 
 --
 -- Constraints for table `administrator_mentorship program`
@@ -837,17 +820,10 @@ ALTER TABLE `admin_alumni`
   ADD CONSTRAINT `admin_alumni_ibfk_2` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
 
 --
--- Constraints for table `admin_donations`
---
-ALTER TABLE `admin_donations`
-  ADD CONSTRAINT `admin_donations_ibfk_1` FOREIGN KEY (`DonationPostId`) REFERENCES `donation_posts` (`ID`),
-  ADD CONSTRAINT `admin_donations_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
-
---
 -- Constraints for table `admin_events`
 --
 ALTER TABLE `admin_events`
-  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`id`),
+  ADD CONSTRAINT `admin_events_ibfk_1` FOREIGN KEY (`EventId`) REFERENCES `events` (`ID`),
   ADD CONSTRAINT `admin_events_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
@@ -856,13 +832,6 @@ ALTER TABLE `admin_events`
 ALTER TABLE `admin_faculty_news_posts`
   ADD CONSTRAINT `admin_faculty_news_posts_ibfk_1` FOREIGN KEY (`FacultyNewsPostId`) REFERENCES `faculty_news_posts` (`ID`),
   ADD CONSTRAINT `admin_faculty_news_posts_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
-
---
--- Constraints for table `alumni_donation`
---
-ALTER TABLE `alumni_donation`
-  ADD CONSTRAINT `alumni_donation_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`),
-  ADD CONSTRAINT `alumni_donation_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
 -- Constraints for table `communication`
@@ -874,7 +843,7 @@ ALTER TABLE `communication`
 -- Constraints for table `events`
 --
 ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
 
 --
 -- Constraints for table `event_request`
@@ -895,12 +864,6 @@ ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`PictureId`) REFERENCES `pictures` (`ID`);
 
 --
--- Constraints for table `it_support_emails`
---
-ALTER TABLE `it_support_emails`
-  ADD CONSTRAINT `it_support_emails_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
-
---
 -- Constraints for table `job_posts_pictures`
 --
 ALTER TABLE `job_posts_pictures`
@@ -911,7 +874,7 @@ ALTER TABLE `job_posts_pictures`
 -- Constraints for table `mentorshipprogram`
 --
 ALTER TABLE `mentorshipprogram`
-  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`id`);
+  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
 
 --
 -- Constraints for table `requesttomentorship`
