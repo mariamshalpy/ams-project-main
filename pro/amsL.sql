@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 02:03 PM
+-- Generation Time: May 01, 2023 at 02:11 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -258,7 +258,8 @@ CREATE TABLE `it_support_emails` (
   `ID` int(11) NOT NULL,
   `email` int(11) NOT NULL,
   `issue` int(11) NOT NULL,
-  `it_reply` varchar(11) NOT NULL
+  `it_reply` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
