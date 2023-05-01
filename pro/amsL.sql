@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 02:11 PM
+-- Generation Time: May 01, 2023 at 02:22 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -256,11 +256,19 @@ CREATE TABLE `it_support` (
 
 CREATE TABLE `it_support_emails` (
   `ID` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
-  `issue` int(11) NOT NULL,
+  `email` varchar(11) NOT NULL,
+  `issue` varchar(11) NOT NULL,
   `it_reply` varchar(50) NOT NULL,
   `role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `it_support_emails`
+--
+
+INSERT INTO `it_support_emails` (`ID`, `email`, `issue`, `it_reply`, `role`) VALUES
+(2, '0', '0', '', 'alumni'),
+(3, '0', '0', '', 'alumni');
 
 -- --------------------------------------------------------
 
@@ -715,7 +723,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `it_support_emails`
 --
 ALTER TABLE `it_support_emails`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `job_posts`
