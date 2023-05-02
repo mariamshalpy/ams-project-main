@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 10:10 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 02, 2023 at 01:23 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ams`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account`
---
-
-CREATE TABLE `account` (
-  `ID` int(11) NOT NULL,
-  `Email` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `RoleId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -64,17 +51,6 @@ INSERT INTO `admin` (`ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES
 CREATE TABLE `administrator_mentorship program` (
   `MentorshipProgramId` int(11) NOT NULL,
   `AdminId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_accounts`
---
-
-CREATE TABLE `admin_accounts` (
-  `AdminId` int(11) NOT NULL,
-  `AccountId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -370,25 +346,6 @@ CREATE TABLE `requesttomentorship` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`ID`, `Name`) VALUES
-(1, 'Admin'),
-(2, 'student');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `saffevent`
 --
 
@@ -413,19 +370,11 @@ CREATE TABLE `staff` (
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Username` varchar(50) NOT NULL,
+  `Address` varchar(50) NOT NULL,
+  `BirthDate` date NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `Age` int(11) NOT NULL,
   `PhoneNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`ID`, `FirstName`, `LastName`, `Email`, `Username`, `Password`, `Age`, `PhoneNumber`) VALUES
-(1, 'mariam', 'saad', 'mariam20', 'mariam20', '2020', 20, 34444),
-(2, 'staff', 'mmm', 'staff20', 'staff', 'staff20', 20, 34444);
 
 -- --------------------------------------------------------
 
@@ -526,13 +475,6 @@ INSERT INTO `survey` (`ID`, `name`, `content`, `rate`, `role`) VALUES
 --
 
 --
--- Indexes for table `account`
---
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `role_id` (`RoleId`);
-
---
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
@@ -544,13 +486,6 @@ ALTER TABLE `admin`
 ALTER TABLE `administrator_mentorship program`
   ADD PRIMARY KEY (`MentorshipProgramId`,`AdminId`),
   ADD KEY `admin_id` (`AdminId`);
-
---
--- Indexes for table `admin_accounts`
---
-ALTER TABLE `admin_accounts`
-  ADD PRIMARY KEY (`AdminId`,`AccountId`),
-  ADD KEY `account_id` (`AccountId`);
 
 --
 -- Indexes for table `admin_alumni`
@@ -656,12 +591,6 @@ ALTER TABLE `requesttomentorship`
   ADD KEY `Alumni_id` (`AlumniId`);
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `saffevent`
 --
 ALTER TABLE `saffevent`
@@ -710,12 +639,6 @@ ALTER TABLE `survey`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `account`
---
-ALTER TABLE `account`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -784,12 +707,6 @@ ALTER TABLE `requesttomentorship`
   MODIFY `RequestId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `saffevent`
 --
 ALTER TABLE `saffevent`
@@ -836,24 +753,11 @@ ALTER TABLE `survey`
 --
 
 --
--- Constraints for table `account`
---
-ALTER TABLE `account`
-  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `roles` (`ID`);
-
---
 -- Constraints for table `administrator_mentorship program`
 --
 ALTER TABLE `administrator_mentorship program`
   ADD CONSTRAINT `administrator_mentorship program_ibfk_1` FOREIGN KEY (`MentorshipProgramId`) REFERENCES `mentorshipprogram` (`ID`),
   ADD CONSTRAINT `administrator_mentorship program_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
-
---
--- Constraints for table `admin_accounts`
---
-ALTER TABLE `admin_accounts`
-  ADD CONSTRAINT `admin_accounts_ibfk_1` FOREIGN KEY (`AccountId`) REFERENCES `account` (`ID`),
-  ADD CONSTRAINT `admin_accounts_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
 -- Constraints for table `admin_alumni`
