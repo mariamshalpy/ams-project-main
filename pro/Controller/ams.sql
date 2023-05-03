@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 07:50 PM
+-- Generation Time: May 03, 2023 at 09:42 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ams`
+-- Database: `ams_1`
 --
 
 -- --------------------------------------------------------
@@ -232,9 +232,9 @@ CREATE TABLE `faculty_news_posts` (
 --
 
 INSERT INTO `faculty_news_posts` (`ID`, `Title`, `Content`, `CreatedAt`) VALUES
-(0, 'Top student of the year.', 'cdbfvdh eduifbsi fbvueiwb  cbwuebcicfiwb cibfcbcnwdfbicv fencifc', '2023-05-01'),
 (1, 'Top student of the year.', 'cdbfvdh eduifbsi fbvueiwb  cbwuebcicfiwb cibfcbcnwdfbicv fencifc', '2023-05-01'),
-(2, 'fcsd c afsefvdsv.', 'frgesrhb ndsb fbds , mjuvn h  bbuesciofaspvm', '2023-05-10');
+(2, 'Top student of the year.', 'cdbfvdh eduifbsi fbvueiwb  cbwuebcicfiwb cibfcbcnwdfbicv fencifc', '2023-05-01'),
+(3, 'fcsd c afsefvdsv.', 'frgesrhb ndsb fbds , mjuvn h  bbuesciofaspvm', '2023-05-10');
 
 -- --------------------------------------------------------
 
@@ -593,13 +593,15 @@ ALTER TABLE `donation`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `name` (`name`),
   ADD KEY `place_id` (`PlaceId`);
 
 --
 -- Indexes for table `event_request`
 --
 ALTER TABLE `event_request`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `faculty_news_posts`
@@ -636,6 +638,7 @@ ALTER TABLE `job_posts`
 --
 ALTER TABLE `mentorshipprogram`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Name` (`Name`),
   ADD KEY `mentorshipprogram_ibfk_1` (`PlaceId`);
 
 --
@@ -648,7 +651,8 @@ ALTER TABLE `place`
 -- Indexes for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Name` (`Name`);
 
 --
 -- Indexes for table `saffevent`
@@ -728,6 +732,12 @@ ALTER TABLE `communication`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
+-- AUTO_INCREMENT for table `donation`
+--
+ALTER TABLE `donation`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -737,6 +747,12 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `faculty_news_posts`
+--
+ALTER TABLE `faculty_news_posts`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
