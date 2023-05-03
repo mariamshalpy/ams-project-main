@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 08:18 PM
+-- Generation Time: May 03, 2023 at 02:13 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -190,8 +190,8 @@ CREATE TABLE `events` (
 --
 
 CREATE TABLE `event_request` (
-  `RequestId` int(11) NOT NULL,
-  `AlumniId` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `alumni_email` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
   `Description` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -336,8 +336,8 @@ CREATE TABLE `place` (
 --
 
 CREATE TABLE `requesttomentorship` (
-  `RequestId` int(11) NOT NULL,
-  `AlumniId` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `alumni_email` varchar(50) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
   `Description` varchar(50) NOT NULL
@@ -557,8 +557,7 @@ ALTER TABLE `events`
 -- Indexes for table `event_request`
 --
 ALTER TABLE `event_request`
-  ADD PRIMARY KEY (`RequestId`),
-  ADD KEY `Alumni_id` (`AlumniId`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `faculty_news_posts`
@@ -607,8 +606,7 @@ ALTER TABLE `place`
 -- Indexes for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  ADD PRIMARY KEY (`RequestId`),
-  ADD KEY `Alumni_id` (`AlumniId`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `saffevent`
@@ -697,7 +695,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
-  MODIFY `RequestId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -733,7 +731,7 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `RequestId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `saffevent`
@@ -822,12 +820,6 @@ ALTER TABLE `events`
   ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
 
 --
--- Constraints for table `event_request`
---
-ALTER TABLE `event_request`
-  ADD CONSTRAINT `event_request_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
-
---
 -- Constraints for table `faq`
 --
 ALTER TABLE `faq`
@@ -838,12 +830,6 @@ ALTER TABLE `faq`
 --
 ALTER TABLE `mentorshipprogram`
   ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
-
---
--- Constraints for table `requesttomentorship`
---
-ALTER TABLE `requesttomentorship`
-  ADD CONSTRAINT `requesttomentorship_ibfk_1` FOREIGN KEY (`AlumniId`) REFERENCES `alumni` (`ID`);
 
 --
 -- Constraints for table `stafffaculty news`
