@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 02:13 PM
+-- Generation Time: May 03, 2023 at 04:52 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -183,6 +183,13 @@ CREATE TABLE `events` (
   `name` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`ID`, `Date`, `NumberOfAttendence`, `EventDescription`, `PlaceId`, `name`) VALUES
+(1, '2023-05-19', 10, 'good', 1, 'software');
+
 -- --------------------------------------------------------
 
 --
@@ -193,8 +200,19 @@ CREATE TABLE `event_request` (
   `ID` int(11) NOT NULL,
   `alumni_email` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
-  `Description` varchar(50) NOT NULL
+  `Description` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_request`
+--
+
+INSERT INTO `event_request` (`ID`, `alumni_email`, `Type`, `Description`, `name`, `status`) VALUES
+(1, 'menna@gmail.com', 'Plan', 'asasas', 'web', 'pending'),
+(2, 'menna@gmail.com', 'Plan', 'java oop', 'opo', 'pending'),
+(3, 'menna@gmail.com', 'Participate', 'c oop', 'software', 'pending');
 
 -- --------------------------------------------------------
 
@@ -317,6 +335,13 @@ CREATE TABLE `mentorshipprogram` (
   `PlaceId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `mentorshipprogram`
+--
+
+INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`, `PlaceId`) VALUES
+(1, 'web developer', 'technicalcourse', 'good', 20, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -329,6 +354,13 @@ CREATE TABLE `place` (
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `place`
+--
+
+INSERT INTO `place` (`ID`, `Name`, `Date`) VALUES
+(1, 'maadi', '2023-05-05');
+
 -- --------------------------------------------------------
 
 --
@@ -340,8 +372,18 @@ CREATE TABLE `requesttomentorship` (
   `alumni_email` varchar(50) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
-  `Description` varchar(50) NOT NULL
+  `Description` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `requesttomentorship`
+--
+
+INSERT INTO `requesttomentorship` (`ID`, `alumni_email`, `Name`, `Type`, `Description`, `status`) VALUES
+(1, 'menna@gmail.com', 'php', 'alumni', 'php oop', 'pending'),
+(2, 'menna@gmail.com', 'java', 'alumni', 'java oop', 'pending'),
+(3, 'menna@gmail.com', 'c', 'TechnicalCourse', 'c oop', 'pending');
 
 -- --------------------------------------------------------
 
@@ -689,13 +731,13 @@ ALTER TABLE `communication`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -719,19 +761,19 @@ ALTER TABLE `job_posts`
 -- AUTO_INCREMENT for table `mentorshipprogram`
 --
 ALTER TABLE `mentorshipprogram`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `saffevent`
