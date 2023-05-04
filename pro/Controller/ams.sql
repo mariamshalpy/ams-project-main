@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 10:37 AM
+-- Generation Time: May 04, 2023 at 10:51 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -352,15 +352,17 @@ INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`
 CREATE TABLE `place` (
   `ID` int(11) NOT NULL,
   `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Date` datetime NOT NULL
+  `starting` datetime NOT NULL,
+  `ending` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `place`
 --
 
-INSERT INTO `place` (`ID`, `Name`, `Date`) VALUES
-(1, 'maadi', '2023-05-05 00:00:00');
+INSERT INTO `place` (`ID`, `Name`, `starting`, `ending`) VALUES
+(1, 'maadi', '2023-05-05 00:00:00', '2023-05-04 00:00:00'),
+(2, '17b', '2023-05-05 08:00:00', '2023-05-04 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -785,7 +787,7 @@ ALTER TABLE `mentorshipprogram`
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `requesttomentorship`
