@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 10:51 AM
+-- Generation Time: May 04, 2023 at 11:35 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -201,19 +201,11 @@ CREATE TABLE `event_request` (
   `ID` int(11) NOT NULL,
   `alumni_email` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
+  `date` date NOT NULL,
   `Description` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `event_request`
---
-
-INSERT INTO `event_request` (`ID`, `alumni_email`, `Type`, `Description`, `name`, `status`) VALUES
-(4, 'mennahefny@gamil.com', 'participate', 'wekmvcalkme', 'software', 'accepted'),
-(15, 'youssef@gmail.com', 'participate', 'wekmvcalkme', 'Java ', 'accepted'),
-(19, 'mariamali@gmail.com', 'participate', 'wekmvcalkme', 'reunion', 'accepted');
 
 -- --------------------------------------------------------
 
