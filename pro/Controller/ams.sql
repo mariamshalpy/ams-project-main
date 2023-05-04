@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 05:48 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 04, 2023 at 07:09 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -189,7 +189,7 @@ CREATE TABLE `events` (
 INSERT INTO `events` (`ID`, `NumberOfAttendence`, `EventDescription`, `PlaceId`, `name`) VALUES
 (1, 30, 'good', 1, 'software'),
 (2, 1, 'aKJscdlkma', 1, 'reunion'),
-(3, 1, 'esarvesvf', 1, 'Java ');
+(3, 10, 'esarvesvf', 1, 'Java ');
 
 -- --------------------------------------------------------
 
@@ -200,11 +200,20 @@ INSERT INTO `events` (`ID`, `NumberOfAttendence`, `EventDescription`, `PlaceId`,
 CREATE TABLE `event_request` (
   `ID` int(11) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Name` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
+  `date` date NOT NULL,
   `Description` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_request`
+--
+
+INSERT INTO `event_request` (`ID`, `Email`, `Type`, `date`, `Description`, `name`, `status`) VALUES
+(20, 'youssef@gmail.com', 'participate', '0000-00-00', 'wekmvcalkme', 'Java', 'pending'),
+(21, 'marwanali@gmail.com', 'plan', '2023-05-05', 'ezdvrzsd', 'C oop', 'pending');
 
 -- --------------------------------------------------------
 
@@ -323,7 +332,7 @@ CREATE TABLE `mentorshipprogram` (
   `Name` varchar(50) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
   `Type` varchar(30) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
   `Description` text CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
-  `Duration` int(11) NOT NULL,
+  `Duration` varchar(11) NOT NULL,
   `PlaceId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -332,7 +341,7 @@ CREATE TABLE `mentorshipprogram` (
 --
 
 INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`, `PlaceId`) VALUES
-(1, 'web developer', 'technicalcourse', 'good', 20, 1);
+(1, 'web developer', 'technicalcourse', 'good', '20', 1);
 
 -- --------------------------------------------------------
 
@@ -343,17 +352,16 @@ INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`
 CREATE TABLE `place` (
   `ID` int(11) NOT NULL,
   `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `starting` datetime NOT NULL,
-  `ending` datetime NOT NULL
+  `booking_date` date NOT NULL,
+  `time_slot` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `place`
 --
 
-INSERT INTO `place` (`ID`, `Name`, `starting`, `ending`) VALUES
-(1, 'maadi', '2023-05-05 00:00:00', '2023-05-04 00:00:00'),
-(2, '17b', '2023-05-05 08:00:00', '2023-05-04 00:00:00');
+INSERT INTO `place` (`ID`, `Name`, `booking_date`, `time_slot`) VALUES
+(3, '17b', '2023-05-05', '14:00-16:00');
 
 -- --------------------------------------------------------
 
@@ -366,16 +374,10 @@ CREATE TABLE `requesttomentorship` (
   `Email` varchar(50) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Type` varchar(50) NOT NULL,
+  `date` date NOT NULL,
   `Description` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `status` varchar(50) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `requesttomentorship`
---
-
-INSERT INTO `requesttomentorship` (`ID`, `Email`, `Name`, `Type`, `Description`, `status`) VALUES
-(1, 'menna@gmail.com', 'php', 'alumni', 'php oop', 'pending');
 
 -- --------------------------------------------------------
 
@@ -479,7 +481,7 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
 (1, 'Marwan', 'Ali', 'marwan3', 'marwan@gmail.com', '1985-05-10', '1234', '123456', 'frontend developer'),
-(2, 'Marwan', 'Ali', 'marwan@gmail.com', '33-madinaty', '2003-03-30', '1234', '01615651', 'frontend developer'),
+(2, 'Marwan', 'Ali', 'marwan@gmail', '33-madinaty', '2003-03-30', '1234', '01615651', 'frontend developer'),
 (3, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '2004-01-25', '1234', '01094764271', 'Software engineer');
 
 -- --------------------------------------------------------
@@ -499,15 +501,6 @@ CREATE TABLE `support` (
   `PhoneNumber` int(11) NOT NULL,
   `JobTitle` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `support`
---
-
-INSERT INTO `support` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
-(1, 'itsupport1', 'shalaby', 'itsupport1@gmail.com', 'Ain shams', '2003-04-05', '1234', 1006132859, 'it support'),
-(2, 'itsupport2', 'shalaby', 'itsupport2@gmail.com', 'Ain shams', '2003-04-05', '1234', 1006132859, 'it support'),
-(3, 'itsupport3', 'shalaby', 'itsupport3@gmail.com', 'Ain shams', '2003-04-05', '1234', 1006132859, 'it support');
 
 -- --------------------------------------------------------
 
@@ -602,7 +595,8 @@ ALTER TABLE `events`
 -- Indexes for table `event_request`
 --
 ALTER TABLE `event_request`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `faculty_news_posts`
@@ -652,7 +646,8 @@ ALTER TABLE `place`
 -- Indexes for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Name` (`Name`);
 
 --
 -- Indexes for table `saffevent`
@@ -747,7 +742,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `faculty_news_posts`
@@ -783,13 +778,13 @@ ALTER TABLE `mentorshipprogram`
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `saffevent`
@@ -831,7 +826,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `support`
 --
 ALTER TABLE `support`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `survey`
@@ -872,40 +867,10 @@ ALTER TABLE `admin_faculty_news_posts`
   ADD CONSTRAINT `admin_faculty_news_posts_ibfk_2` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
 
 --
--- Constraints for table `events`
---
-ALTER TABLE `events`
-  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
-
---
 -- Constraints for table `faq`
 --
 ALTER TABLE `faq`
   ADD CONSTRAINT `faq_ibfk_1` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
-
---
--- Constraints for table `mentorshipprogram`
---
-ALTER TABLE `mentorshipprogram`
-  ADD CONSTRAINT `mentorshipprogram_ibfk_1` FOREIGN KEY (`PlaceId`) REFERENCES `place` (`ID`);
-
---
--- Constraints for table `stafffaculty news`
---
-ALTER TABLE `stafffaculty news`
-  ADD CONSTRAINT `stafffaculty news_ibfk_1` FOREIGN KEY (`StaffId`) REFERENCES `staff` (`ID`);
-
---
--- Constraints for table `staffjobposts`
---
-ALTER TABLE `staffjobposts`
-  ADD CONSTRAINT `staffjobposts_ibfk_1` FOREIGN KEY (`StaffId`) REFERENCES `staff` (`ID`);
-
---
--- Constraints for table `staffmentorship program`
---
-ALTER TABLE `staffmentorship program`
-  ADD CONSTRAINT `staffmentorship program_ibfk_1` FOREIGN KEY (`StaffId`) REFERENCES `staff` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
