@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 09:42 PM
+-- Generation Time: May 04, 2023 at 10:37 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ams_1`
+-- Database: `ams`
 --
 
 -- --------------------------------------------------------
@@ -176,8 +176,7 @@ CREATE TABLE `donation` (
 
 CREATE TABLE `events` (
   `ID` int(11) NOT NULL,
-  `Date` date NOT NULL,
-  `NumberOfAttendence` int(11) NOT NULL,
+  `NumberOfAttendence` int(11) NOT NULL DEFAULT 0,
   `EventDescription` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `PlaceId` int(11) NOT NULL,
   `name` varchar(70) NOT NULL
@@ -187,8 +186,10 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`ID`, `Date`, `NumberOfAttendence`, `EventDescription`, `PlaceId`, `name`) VALUES
-(1, '2023-05-19', 10, 'good', 1, 'software');
+INSERT INTO `events` (`ID`, `NumberOfAttendence`, `EventDescription`, `PlaceId`, `name`) VALUES
+(1, 30, 'good', 1, 'software'),
+(2, 1, 'aKJscdlkma', 1, 'reunion'),
+(3, 1, 'esarvesvf', 1, 'Java ');
 
 -- --------------------------------------------------------
 
@@ -210,9 +211,9 @@ CREATE TABLE `event_request` (
 --
 
 INSERT INTO `event_request` (`ID`, `alumni_email`, `Type`, `Description`, `name`, `status`) VALUES
-(1, 'menna@gmail.com', 'Plan', 'asasas', 'web', 'pending'),
-(2, 'menna@gmail.com', 'Plan', 'java oop', 'opo', 'pending'),
-(3, 'menna@gmail.com', 'Participate', 'c oop', 'software', 'pending');
+(4, 'mennahefny@gamil.com', 'participate', 'wekmvcalkme', 'software', 'accepted'),
+(15, 'youssef@gmail.com', 'participate', 'wekmvcalkme', 'Java ', 'accepted'),
+(19, 'mariamali@gmail.com', 'participate', 'wekmvcalkme', 'reunion', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -351,7 +352,7 @@ INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`
 CREATE TABLE `place` (
   `ID` int(11) NOT NULL,
   `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Date` date NOT NULL
+  `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -359,7 +360,7 @@ CREATE TABLE `place` (
 --
 
 INSERT INTO `place` (`ID`, `Name`, `Date`) VALUES
-(1, 'maadi', '2023-05-05');
+(1, 'maadi', '2023-05-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -574,7 +575,8 @@ ALTER TABLE `admin_faculty_news_posts`
 --
 ALTER TABLE `alumni`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Email_2` (`Email`);
 
 --
 -- Indexes for table `communication`
@@ -741,13 +743,13 @@ ALTER TABLE `donation`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `faculty_news_posts`
