@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 07:09 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 04, 2023 at 11:09 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -382,22 +382,6 @@ CREATE TABLE `requesttomentorship` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `saffevent`
---
-
-CREATE TABLE `saffevent` (
-  `EventId` int(11) NOT NULL,
-  `name` varchar(70) NOT NULL,
-  `Date` int(11) NOT NULL,
-  `NumberOfAttendence` int(11) NOT NULL,
-  `EventDescription` varchar(1000) NOT NULL,
-  `StaffId` int(11) NOT NULL,
-  `place` varchar(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `staff`
 --
 
@@ -415,46 +399,45 @@ CREATE TABLE `staff` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stafffaculty news`
+-- Table structure for table `staff_event`
 --
 
-CREATE TABLE `stafffaculty news` (
-  `ID` int(11) NOT NULL,
-  `Content` varchar(50) NOT NULL,
-  `Title` varchar(50) NOT NULL,
-  `Date` date NOT NULL,
-  `StaffId` int(11) NOT NULL
+CREATE TABLE `staff_event` (
+  `staff_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffjobposts`
+-- Table structure for table `staff_job_post`
 --
 
-CREATE TABLE `staffjobposts` (
-  `ID` int(11) NOT NULL,
-  `CompanyName` varchar(50) NOT NULL,
-  `Date` date NOT NULL,
-  `JobDescription` varchar(500) NOT NULL,
-  `Title` varchar(50) NOT NULL,
-  `StaffId` int(11) NOT NULL
+CREATE TABLE `staff_job_post` (
+  `staff_id` int(11) NOT NULL,
+  `job_post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staffmentorship program`
+-- Table structure for table `staff_news`
 --
 
-CREATE TABLE `staffmentorship program` (
-  `MentorshipProgramId` int(11) NOT NULL,
-  `Place` varchar(50) NOT NULL,
-  `StaffId` int(11) NOT NULL,
-  `Title` varchar(50) NOT NULL,
-  `Type` varchar(30) NOT NULL,
-  `Description` varchar(1000) NOT NULL,
-  `Duration` int(11) NOT NULL
+CREATE TABLE `staff_news` (
+  `staff_id` int(11) NOT NULL,
+  `news_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff_program`
+--
+
+CREATE TABLE `staff_program` (
+  `staff_id` int(11) NOT NULL,
+  `program_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -650,13 +633,6 @@ ALTER TABLE `requesttomentorship`
   ADD UNIQUE KEY `Name` (`Name`);
 
 --
--- Indexes for table `saffevent`
---
-ALTER TABLE `saffevent`
-  ADD PRIMARY KEY (`EventId`),
-  ADD KEY `staffid` (`StaffId`);
-
---
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
@@ -664,25 +640,32 @@ ALTER TABLE `staff`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
--- Indexes for table `stafffaculty news`
+-- Indexes for table `staff_event`
 --
-ALTER TABLE `stafffaculty news`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `staffid` (`StaffId`);
+ALTER TABLE `staff_event`
+  ADD KEY `event_id` (`event_id`),
+  ADD KEY `staff_id` (`staff_id`);
 
 --
--- Indexes for table `staffjobposts`
+-- Indexes for table `staff_job_post`
 --
-ALTER TABLE `staffjobposts`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `StaffId` (`StaffId`);
+ALTER TABLE `staff_job_post`
+  ADD KEY `staff_id` (`staff_id`),
+  ADD KEY `job_post_id` (`job_post_id`);
 
 --
--- Indexes for table `staffmentorship program`
+-- Indexes for table `staff_news`
 --
-ALTER TABLE `staffmentorship program`
-  ADD PRIMARY KEY (`MentorshipProgramId`),
-  ADD KEY `staffid` (`StaffId`);
+ALTER TABLE `staff_news`
+  ADD KEY `news_id` (`news_id`),
+  ADD KEY `staff_id` (`staff_id`);
+
+--
+-- Indexes for table `staff_program`
+--
+ALTER TABLE `staff_program`
+  ADD KEY `program_id` (`program_id`),
+  ADD KEY `staff_id` (`staff_id`);
 
 --
 -- Indexes for table `student`
@@ -787,34 +770,10 @@ ALTER TABLE `requesttomentorship`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `saffevent`
---
-ALTER TABLE `saffevent`
-  MODIFY `EventId` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `stafffaculty news`
---
-ALTER TABLE `stafffaculty news`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staffjobposts`
---
-ALTER TABLE `staffjobposts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `staffmentorship program`
---
-ALTER TABLE `staffmentorship program`
-  MODIFY `MentorshipProgramId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -871,6 +830,34 @@ ALTER TABLE `admin_faculty_news_posts`
 --
 ALTER TABLE `faq`
   ADD CONSTRAINT `faq_ibfk_1` FOREIGN KEY (`AdminId`) REFERENCES `admin` (`ID`);
+
+--
+-- Constraints for table `staff_event`
+--
+ALTER TABLE `staff_event`
+  ADD CONSTRAINT `staff_event_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`ID`),
+  ADD CONSTRAINT `staff_event_ibfk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`ID`);
+
+--
+-- Constraints for table `staff_job_post`
+--
+ALTER TABLE `staff_job_post`
+  ADD CONSTRAINT `staff_job_post_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`ID`),
+  ADD CONSTRAINT `staff_job_post_ibfk_2` FOREIGN KEY (`job_post_id`) REFERENCES `job_posts` (`ID`);
+
+--
+-- Constraints for table `staff_news`
+--
+ALTER TABLE `staff_news`
+  ADD CONSTRAINT `staff_news_ibfk_1` FOREIGN KEY (`news_id`) REFERENCES `faculty_news_posts` (`ID`),
+  ADD CONSTRAINT `staff_news_ibfk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`ID`);
+
+--
+-- Constraints for table `staff_program`
+--
+ALTER TABLE `staff_program`
+  ADD CONSTRAINT `staff_program_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `mentorshipprogram` (`ID`),
+  ADD CONSTRAINT `staff_program_ibfk_2` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
