@@ -582,7 +582,7 @@ ALTER TABLE `events`
 -- Indexes for table `event_request`
 --
 ALTER TABLE `event_request`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`ID`);
   
 
 --
