@@ -756,7 +756,7 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`
