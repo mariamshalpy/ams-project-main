@@ -583,7 +583,7 @@ ALTER TABLE `events`
 --
 ALTER TABLE `event_request`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `name` (`name`);
+  
 
 --
 -- Indexes for table `faculty_news_posts`
