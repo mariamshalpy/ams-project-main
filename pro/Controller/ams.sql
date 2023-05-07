@@ -277,21 +277,10 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`ID`, `name`, `content`, `role`) VALUES
-(1, '0', '0', '0'),
-(2, 'mariam', 'very good', 'alumni'),
-(3, 'marrrrriam', 'very good', 'alumni'),
-(4, 'marrrrriam', 'very good', 'alumni'),
-(5, 'marrrrriam', 'very good', 'alumni'),
-(6, 'mariam ali', 'goo', 'alumni'),
-(7, 'mariam ali', 'goo', 'alumni'),
-(8, 'mariaamali8', 'goo', 'alumni'),
-(9, 'mariaamali8', 'goo', 'alumni'),
-(10, 'mariaamali8', 'goo', 'alumni'),
-(11, 'mariam', 'good', 'alumni'),
-(12, 'menna', 'very good', 'alumni'),
-(13, 'mariam', 'good', 'alumni'),
-(14, 'marwan two', 'swdwsdw', 'student'),
-(15, 'marwan ali', 'fffsf', 'student');
+
+(1, 'mariam', 'very good', 'alumni'),
+(2, 'mariam', 'good', 'alumni'),
+(3, 'marwan', 'easy to use', 'student');
 
 -- --------------------------------------------------------
 
