@@ -463,9 +463,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
-(1, 'Marwan', 'Ali', 'marwan3', 'marwan@gmail.com', '1985-05-10', '1234', '123456', 'frontend developer'),
-(2, 'Marwan', 'Ali', 'marwan@gmail', '33-madinaty', '2003-03-30', '1234', '01615651', 'frontend developer'),
-(3, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '2004-01-25', '1234', '01094764271', 'Software engineer');
+(1, 'Marwan', 'Ali', 'marwan@gmail.com', 'madinty', '1985-05-10', '1234', '123456', 'frontend developer'),
+
+(2, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '2004-01-25', '1234', '01094764271', 'Software engineer');
 
 -- --------------------------------------------------------
 
