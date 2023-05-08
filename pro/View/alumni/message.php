@@ -99,7 +99,7 @@ $comm=new commoop;
   <!-- ***** Header Area End ***** -->
  
   <div class="main-banner" id="top" style="padding-bottom: 11px;">
-  <img src="../../View/assets/images/student/comm.png" style="width: 1163px;
+  <img src="../../View/assets/images/student/communication.png" style="width: 1163px;
     margin-left: 135px;
     height: 560px;">
    </div> 
