@@ -21,6 +21,18 @@ if(isset($_GET["deleted"]))
 {  
      $success_message = 'data deleted';  
 }
+ if(isset($_GET["plan_delete"]))  
+{  
+     $where = array('Email'=>$_GET["email"]);  
+     if($db->delete("event_request", $where))  
+     {  
+          // header("location:manage_accounts.php?deleted=1");  
+     }  
+}  
+if(isset($_GET["deleted"]))  
+{  
+     $success_message = 'data deleted';  
+}
 if(isset($_GET["accept_participation_request"])) {
   $Email = $_GET["Email"];
   $new_event_handler->accept_participation_request($Email); 
@@ -140,6 +152,15 @@ $(document).ready(function() {
     var email = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
       window.location.href = 'Event_requests.php?participation_delete=1&email=' + email;  
+    }  
+  });  
+}); 
+$(document).ready(function() {  
+  $('.plan_delete').on('click', function(event) {
+    event.preventDefault();
+    var email = $(this).attr('id');  
+    if (confirm('Are you sure you want to delete this post?')) {  
+      window.location.href = 'Event_requests.php?plan_delete=1&email=' + email;  
     }  
   });  
 }); 

@@ -119,7 +119,7 @@ li.dropdown1 {
              
              
 
-              <li class="scroll-to-section"><a href="">Profile</a></li>
+              <li class="scroll-to-section"><a href="editprofile1.php">Profile</a></li>
 
                           <!--still working on survey-->
              

@@ -6,21 +6,17 @@ $errMsg="update";
 $userid=$_SESSION['name']; 
 $use=new database;
 $where=array('FirstName'=>$_SESSION['name']);
-$data=$use->select_where('alumni',$where);
+$data=$use->select_where('admin',$where);
 foreach($data as $row);
 if(isset($_POST['Edit']))
 {
     $name=$_POST['name'];
-    $phonenumber = $_POST['phonenumber'];
     $email = $_POST['email'];
-	$address =$_POST['address'];
-	$bdate = $_POST['bdate'];
 	$password = $_POST['password'];
-    $jobtitle = $_POST['jobtitle'];
     //$q="UPDATE `alumni` set FirstName='$name', Address='$address', PhoneNumber='$phonenumber', Password='$password',JobTitle='$jobtitle', BirthDate='$bdate',Email='$email' where FirstName='$userid' ";
-    $update=array('FirstName'=>$_POST['name'],'PhoneNumber'=>$_POST['phonenumber'],'Password'=>$_POST['password'],'JobTitle'=>$_POST['jobtitle'],'BirthDate'=>$_POST['bdate'],'Email'=>$_POST['email']);
+    $update=array('FirstName'=>$_POST['name'],'Email'=>$_POST['email'],'Password'=>$_POST['password']);
     $condition=array('FirstName'=>$_SESSION['name']);
-    $use->update('alumni',$update,$condition);
+    $use->update('admin',$update,$condition);
     $errMsg='';
 }
 
@@ -136,13 +132,7 @@ if(isset($_POST['Edit']))
                     
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                  <label class="form-label" for="address">Address</label>
-                    <input type="text"  id="address" name="address" required  class="form-control" value="<?php echo $row['Address'];?>" >
-                    
-                  </div>
-                </div>
+                
               </div>
 
               <!-- Email input -->
@@ -155,13 +145,7 @@ if(isset($_POST['Edit']))
 
               <!-- Password input -->
               <div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                  <label class="form-label" for="bdate">Date of birth</label>
-                    <input type="text" id="bdate" name="bdate" required  class="form-control" value="<?php echo $row['BirthDate'];?>" >
-                   
-                  </div>
-                </div>
+                
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                   <label class="form-label" for="password">Password</label>
@@ -172,20 +156,11 @@ if(isset($_POST['Edit']))
               </div>
               
 				<div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                  <label class="form-label" for="phonenumber">Phone Number</label>
-                    <input type="text"  id="phonenumber" name="phonenumber" required  class="form-control"  value="<?php echo $row['PhoneNumber'];?>" >
-                    
-                  </div>
+                
                 </div>
                
               </div>
-              <div class="form-outline mb-4">
-              <label class="form-label" for="jobtitle">Job Title</label>
-                <input type="text"  id="jobtitle" required placeholder="Job title" name="jobtitle" class="form-control" value="<?php echo $row['JobTitle'];?>">
-                
-              </div>
+              
               
            
 

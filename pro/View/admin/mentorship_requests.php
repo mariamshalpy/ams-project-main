@@ -9,10 +9,34 @@
  
 
  
- if(isset($_GET["delete"]))  
+ if(isset($_GET["participation_delete"]))  
 {  
-     $where = array('Email'=>$_GET["Email"]);  
-     if($db->delete("event_request", $where))  
+     $where = array('Email'=>$_GET["email"]);  
+     if($db->delete("requesttomentorship", $where))  
+     {  
+          // header("location:manage_accounts.php?deleted=1");  
+     }  
+}  
+if(isset($_GET["deleted"]))  
+{  
+     $success_message = 'data deleted';  
+}
+ if(isset($_GET["TechnicalCourse_delete"]))  
+{  
+     $where = array('Email'=>$_GET["email"]);  
+     if($db->delete("requesttomentorship", $where))  
+     {  
+          // header("location:manage_accounts.php?deleted=1");  
+     }  
+}  
+if(isset($_GET["deleted"]))  
+{  
+     $success_message = 'data deleted';  
+}
+ if(isset($_GET["Careerbuild_delete"]))  
+{  
+     $where = array('Email'=>$_GET["email"]);  
+     if($db->delete("requesttomentorship", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
      }  
@@ -156,19 +180,33 @@ if(isset($_GET["accept_participation_request"])) {
 </body>
 </html>
 <script>  
- $(document).ready(function(){  
-      $('.delete').click(function(){  
-           var Email = $(this).attr("id");  
-           if(confirm("Are you sure you want to decline this request?"))  
-           {  
-                window.location = "mentorship_requests.php?delete=1&Email="+Email+"";  
-           }  
-           else  
-           {  
-                return false;  
-           }  
-      });  
- });
+$(document).ready(function() {  
+  $('.participation_delete').on('click', function(event) {
+    event.preventDefault();
+    var email = $(this).attr('id');  
+    if (confirm('Are you sure you want to delete this post?')) {  
+      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+    }  
+  });  
+});
+$(document).ready(function() {  
+  $('.TechnicalCourse_delete').on('click', function(event) {
+    event.preventDefault();
+    var email = $(this).attr('id');  
+    if (confirm('Are you sure you want to delete this post?')) {  
+      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+    }  
+  });  
+});
+$(document).ready(function() {  
+  $('.Careerbuild_delete').on('click', function(event) {
+    event.preventDefault();
+    var email = $(this).attr('id');  
+    if (confirm('Are you sure you want to delete this post?')) {  
+      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+    }  
+  });  
+});
  
  document.addEventListener('DOMContentLoaded', function() {
     const updateButtons = document.querySelectorAll('.accept_participation_request');
