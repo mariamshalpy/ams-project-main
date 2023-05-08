@@ -140,9 +140,7 @@ if(isset($_POST['send']))
                     <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
                   </fieldset>
                 <div class="col-lg-12">
-                <fieldset>
-                  <input type="name" name="des" id="name" placeholder="Event Description..." autocomplete="on" required>
-                  </fieldset>
+                
                   
                   <div class="form-outline mb-4">
                   <div class="form-outline">
