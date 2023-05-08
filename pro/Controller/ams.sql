@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 12:35 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 08, 2023 at 09:03 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -365,15 +365,21 @@ CREATE TABLE `requesttomentorship` (
   `Type` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `Description` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'pending'
+  `status` varchar(50) NOT NULL DEFAULT 'pending',
+  `Duration` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `requesttomentorship`
 --
 
-INSERT INTO `requesttomentorship` (`ID`, `Email`, `Name`, `Type`, `date`, `Description`, `status`) VALUES
-(4, 'marwan@gmail.com', 'web development', 'participate', '2023-05-08', '', 'pending');
+INSERT INTO `requesttomentorship` (`ID`, `Email`, `Name`, `Type`, `date`, `Description`, `status`, `Duration`) VALUES
+(4, 'marwan@gmail.com', 'web development', 'participate', '2023-05-08', '', 'pending', ''),
+(5, 'menna@gmail.com', 'evmenn', 'CareerBuild', '2023-05-09', 'jbnmbmn', 'pending', ''),
+(6, 'menna@gmail.com', 'lsdlsd', 'TechnicalCourse', '2023-06-03', '20hr', 'pending', ''),
+(8, 'menna@gmail.com', 'lllll', 'CareerBuild', '2023-06-03', 'klnk', 'pending', '20hrr'),
+(9, 'menna@gmail.com', 'aoo', 'CareerBuild', '2023-05-26', 'nl', 'pending', '20hr'),
+(10, 'menna@gmail.com', 'aoo', 'CareerBuild', '2023-05-27', 'lknl', 'pending', '20hrr');
 
 -- --------------------------------------------------------
 
@@ -583,7 +589,6 @@ ALTER TABLE `events`
 --
 ALTER TABLE `event_request`
   ADD PRIMARY KEY (`ID`);
-  
 
 --
 -- Indexes for table `faculty_news_posts`
@@ -633,8 +638,7 @@ ALTER TABLE `place`
 -- Indexes for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `Name` (`Name`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `staff`
@@ -771,7 +775,7 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `staff`
