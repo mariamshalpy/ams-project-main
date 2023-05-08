@@ -4,7 +4,7 @@ session_start();
 //include 'surveycontroller.php';
 //require '../../Controller/handler.php'; 
 include("../../Controller/database.php");
-require '../../Model/alumni/planeventM.php';
+require '../../Model/alumni&student/planeventM.php';
 
 $errMsg="insert";
 if(isset($_POST['send']))
