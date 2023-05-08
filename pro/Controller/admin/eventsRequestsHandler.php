@@ -32,7 +32,7 @@ class EventsRequestsHandler{
               echo '<td>' . $post["status"] . '</td>';
               echo '<td>';
               echo '<button class="yes-button"><a href="Event_planning.php?email=' . $post["Email"] . '&name=' . $post["name"] . '&description=' . $post["Description"] . '&date=' . $post["date"] . '" class="update"><i class="fas fa-check"></i></a></button>';
-              echo '<button class="no-button"><a href="#" id="' . $post["Email"] . '" class="delete"><i class="fas fa-times"></i> </button>';
+              echo '<button class="no-button"><a href="#" id="' . $post["Email"] . '" class="plan_delete"><i class="fas fa-times"></i> </button>';
               echo '</td>';
               echo '</tr>';
             }
