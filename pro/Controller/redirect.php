@@ -9,7 +9,7 @@
 	}else if($_SESSION['role'] == 'alumni'){
 		header("Location: ../View/alumni/home.php");
 	}else if($_SESSION['role'] == 'staff'){
-		header("Location: ../Model/staff/home.php");
+		header("Location: ../View/staff/home.php");
 	}else if($_SESSION['role'] == 'support'){
 		header("Location: ../View/support/home.php");
 	}
