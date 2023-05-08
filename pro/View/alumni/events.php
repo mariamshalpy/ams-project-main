@@ -2,7 +2,7 @@
 session_start();
 include("../../Controller/database.php");
 require_once("../../Controller/db_conn.php");
-require_once("../../Model/alumni/events.php");
+require_once("../../Model/alumni&student/event.php");
 $data = new database();
 
 
