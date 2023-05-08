@@ -155,11 +155,7 @@ if(isset($_POST['send']))
                 <div class="row">
                 <div class="col-md-6 mb-4">
                 
-                  <div class="form-outline">
-                    <input type="date" name="bdate"   class="form-control" >
-                    
-            
-                </div>
+                  
                 </div>
                 <div class="col-lg-12">
                   <fieldset>
