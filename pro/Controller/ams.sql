@@ -357,8 +357,8 @@ CREATE TABLE `requesttomentorship` (
 
 INSERT INTO `requesttomentorship` (`ID`, `Email`, `Name`, `Type`, `date`, `Description`, `status`, `Duration`) VALUES
 (1, 'marwan@gmail.com', 'web development', 'participate', '2023-05-08', '', 'pending', ''),
-(2, 'menna@gmail.com', 'evmenn', 'CareerBuild', '2023-05-09', 'jbnmbmn', 'pending', ''),
-(3, 'menna@gmail.com', 'lsdlsd', 'TechnicalCourse', '2023-06-03', '20hr', 'pending', '');
+(2, 'menna@gmail.com', 'evmenn', 'Careerbuild', '2023-05-09', 'jbnmbmn', 'pending', '20hr'),
+(3, 'menna@gmail.com', 'js', 'Technical course', '2023-06-03', 'js is easy', 'pending', '20hr');
 
 -- --------------------------------------------------------
 
