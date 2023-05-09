@@ -494,8 +494,8 @@ CREATE TABLE `survey` (
 --
 
 INSERT INTO `survey` (`ID`, `name`, `content`, `rate`, `role`) VALUES
-(1, 'mariam', 'csdw', 4, 'student'),
-(2, 'mariam', 'gngfngn', 5, 'student');
+(1, 'mariam', 'very good site', 4, 'student'),
+(2, 'mariam', 'good job', 5, 'student');
 
 --
 -- Indexes for dumped tables
