@@ -164,7 +164,7 @@ li.dropdown1 {
               <li class="dropdown1">
                 <a href="javascript:void(0)" class="dropbtn1"> Mentorship Program</a>
                 <div class="dropdown1-content">
-                <a href="">View Mentorship Program</a>           <!--add the correct path -->
+                <a href="view_mentorship.php">View Mentorship Program</a>  
                 <a href="mentorship_program.php">Manage Mentorship Program</a>
                </div>
               </li>
