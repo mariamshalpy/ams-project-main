@@ -6,6 +6,9 @@ $account_handler = new AccountHandler;
 $success_message = ''; 
 
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

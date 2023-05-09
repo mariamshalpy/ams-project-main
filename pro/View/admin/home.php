@@ -188,7 +188,7 @@ li.dropdown1 {
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <a href="./Events.php">
+          <a href="../../View/alumni/home.php"> 
             <div class="item">
               <div class="image">
                 <img src="../../View/assets/images/admin/charity-donation.png" alt="" style="max-width: 44px;">

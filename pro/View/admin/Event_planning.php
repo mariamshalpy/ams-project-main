@@ -24,24 +24,23 @@ require_once "../../Controller/admin/eventsRequestsHandler.php";
  $handler =new Eventhandler();
  $r_handler =new EventsRequestsHandler();
 
-$email = $_GET["email"];
-$event_name = $_GET["name"];
-$event_description = $_GET["description"];
-$event_date = $_GET["date"];
-
-                      // for Event class                           
-                    //  if(isset($_POST['name']) && isset($_POST['description']) && isset($_POST["place"]) && isset($_POST['date']) && isset($_POST["time"]))
-                    //  {
-  if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST["place"]) && !empty($_POST['date']) && !empty($_POST["time"]))
-  {
-    $event_post->set_name(htmlspecialchars($_POST['name']));
-    $event_post->set_description(htmlspecialchars($_POST['description']));
-    $place->set_name(htmlspecialchars($_POST["place"]));
-    $place->set_date(htmlspecialchars($_POST['date']));
-    $place->set_time_slot(htmlspecialchars($_POST["time"]));
-    $handler->add_events($event_post,$place);
-    $r_handler->updateStatus($email,'accepted');
-  }
+ $email = $_GET["email"];
+ $ID = $_GET["id"];
+ $event_name = $_GET["name"];
+ $event_description = $_GET["description"];
+ $event_date = $_GET["date"];
+ 
+ if(!empty($_POST['name']) && !empty($_POST['description']) && !empty($_POST["place"]) && !empty($_POST['date']) && !empty($_POST["time"]))
+ {
+     $event_post->set_name(htmlspecialchars($_POST['name']));
+     $event_post->set_description(htmlspecialchars($_POST['description']));
+     $place->set_name(htmlspecialchars($_POST["place"]));
+     $place->set_date(htmlspecialchars($_POST['date']));
+     $place->set_time_slot(htmlspecialchars($_POST["time"]));
+ 
+     $r_handler->updateStatus($ID, 'accepted'); // update status before adding the event
+     $handler->add_events($event_post, $place);
+ }
 //} 
                          
                         
@@ -162,30 +161,7 @@ $event_date = $_GET["date"];
 <br>
 <br>
 
-   <div class="container">
-      <table>
-          <!--head table-->
-          <thead>
-            <tr>
-              <th> ID </th>
-              <th> Event Name </th>
-              <th>Number of Attendence</th>
-              <th>Description</th>
-              <th> Place </th>
-              <th> Date</th>
-              <th>Time</th> 
-              <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-             $handler->get_all_data();
-            ?>
-        </tbody>
-
-     </table>
-  </div>
-
+   
 
                    
 

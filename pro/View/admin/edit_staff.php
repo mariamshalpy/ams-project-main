@@ -1,19 +1,12 @@
 <?php
      
 require_once 'header.php';
-require_once '../../Model/jobposts.php';
-require_once '../../Controller/admin/jobpostshandler.php';
+require_once '../../Model/staff.php';
+require_once '../../Controller/admin/accountHandler.php';
 
 
 
-$handler = new JobPostHandler;
-
-  
-
-
-    
-
-
+$handler = new AccountHandler;
 
 
 ?>
@@ -56,15 +49,15 @@ $handler = new JobPostHandler;
 
 
 <?php
-  $handler->selectrow();
+  $handler->edit_staff();
 ?>
   
 
  
                    <div class="col-lg-12">
 
-                <button type="submit" name="update" id="form-submit">Update</button>
-                <button>  <a href ="job_posts.php"   >see updates</a>  </button>
+                <button type="submit" name="update_staff" id="form-submit">Update</button>
+                <button>  <a href ="manage_accounts.php"   >see updates</a>  </button>
                
 
                   </fieldset>

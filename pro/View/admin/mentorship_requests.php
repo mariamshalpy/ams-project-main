@@ -11,7 +11,7 @@
  
  if(isset($_GET["participation_delete"]))  
 {  
-     $where = array('Email'=>$_GET["email"]);  
+     $where = array('ID'=>$_GET["ID"]);  
      if($db->delete("requesttomentorship", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
@@ -23,7 +23,7 @@ if(isset($_GET["deleted"]))
 }
  if(isset($_GET["TechnicalCourse_delete"]))  
 {  
-     $where = array('Email'=>$_GET["email"]);  
+     $where = array('ID'=>$_GET["ID"]);  
      if($db->delete("requesttomentorship", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
@@ -35,7 +35,7 @@ if(isset($_GET["deleted"]))
 }
  if(isset($_GET["Careerbuild_delete"]))  
 {  
-     $where = array('Email'=>$_GET["email"]);  
+     $where = array('ID'=>$_GET["ID"]);  
      if($db->delete("requesttomentorship", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
@@ -46,8 +46,8 @@ if(isset($_GET["deleted"]))
      $success_message = 'data deleted';  
 }
 if(isset($_GET["accept_participation_request"])) {
-  $Email = $_GET["Email"];
-  $new_Mentorship_handler->accept_participation_request($Email); 
+  $ID = $_GET["ID"];
+  $new_Mentorship_handler->accept_participation_request($ID); 
 }
  if(isset($_GET["accept_planing_request"])) {
    $Email = $_GET["Email"];
@@ -138,6 +138,7 @@ if(isset($_GET["accept_participation_request"])) {
                     <th>date</th>
                     <th>Description</th>
                     <th>status</th>
+                    <th>Duration</th>
                     <th>option</th>
                   </tr>
                 </thead>
@@ -160,6 +161,7 @@ if(isset($_GET["accept_participation_request"])) {
                     <th>date</th>
                     <th>Description</th>
                     <th>status</th>
+                    <th>Duration</th>
                     <th>option</th>
                   </tr>
                 </thead>
@@ -183,27 +185,27 @@ if(isset($_GET["accept_participation_request"])) {
 $(document).ready(function() {  
   $('.participation_delete').on('click', function(event) {
     event.preventDefault();
-    var email = $(this).attr('id');  
+    var ID = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
-      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+      window.location.href = 'mentorship_requests.php?participation_delete=true&ID=' + ID;  
     }  
   });  
 });
 $(document).ready(function() {  
   $('.TechnicalCourse_delete').on('click', function(event) {
     event.preventDefault();
-    var email = $(this).attr('id');  
+    var ID = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
-      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+      window.location.href = 'mentorship_requests.php?TechnicalCourse_delete=true&ID=' + ID;  
     }  
   });  
 });
 $(document).ready(function() {  
   $('.Careerbuild_delete').on('click', function(event) {
     event.preventDefault();
-    var email = $(this).attr('id');  
+    var ID = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
-      window.location.href = 'mentorship_requests.php?participation_delete=1&email=' + email;  
+      window.location.href = 'mentorship_requests.php?participation_delete=true&ID=' + ID;  
     }  
   });  
 });
@@ -212,9 +214,9 @@ $(document).ready(function() {
     const updateButtons = document.querySelectorAll('.accept_participation_request');
     updateButtons.forEach(function(updateButton) {
         updateButton.addEventListener('click', function() {
-            const Email = this.getAttribute('id');
+            const ID = this.getAttribute('id');
             if (confirm('Are you sure you want to accept this request?')) {
-              window.location.href = `mentorship_requests.php?accept_participation_request=true&Email=${Email}`;
+              window.location.href = `mentorship_requests.php?accept_participation_request=true&ID=${ID}`;
             } else {
                 return false;
             }
@@ -226,9 +228,9 @@ $(document).ready(function() {
      const updateButtons = document.querySelectorAll('.accept_planing_request');
      updateButtons.forEach(function(updateButton) {
          updateButton.addEventListener('click', function() {
-             const Email = this.getAttribute('id');
+             const ID = this.getAttribute('id');
              if (confirm('Are you sure you want to accept this request?')) {
-               window.location.href = `Event_requests.php?accept_planing_request=true&Email=${Email}`;
+               window.location.href = `Event_requests.php?accept_planing_request=true&Email=${ID}`;
              } else {
                  return false;
              }

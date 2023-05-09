@@ -11,7 +11,7 @@
  
  if(isset($_GET["participation_delete"]))  
 {  
-     $where = array('Email'=>$_GET["email"]);  
+     $where = array('ID'=>$_GET["ID"]);  
      if($db->delete("event_request", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
@@ -23,7 +23,7 @@ if(isset($_GET["deleted"]))
 }
  if(isset($_GET["plan_delete"]))  
 {  
-     $where = array('Email'=>$_GET["email"]);  
+     $where = array('ID'=>$_GET["ID"]);  
      if($db->delete("event_request", $where))  
      {  
           // header("location:manage_accounts.php?deleted=1");  
@@ -34,15 +34,10 @@ if(isset($_GET["deleted"]))
      $success_message = 'data deleted';  
 }
 if(isset($_GET["accept_participation_request"])) {
-  $Email = $_GET["Email"];
-  $new_event_handler->accept_participation_request($Email); 
+  $ID = $_GET["ID"];
+  $new_event_handler->accept_participation_request($ID); 
 }
- if(isset($_GET["accept_planing_request"])) {
-   $Email = $_GET["Email"];
-   
-  
 
- }
 
 ?>
 
@@ -149,29 +144,29 @@ if(isset($_GET["accept_participation_request"])) {
 $(document).ready(function() {  
   $('.participation_delete').on('click', function(event) {
     event.preventDefault();
-    var email = $(this).attr('id');  
+    var ID = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
-      window.location.href = 'Event_requests.php?participation_delete=1&email=' + email;  
+      window.location.href = 'Event_requests.php?participation_delete=1&ID=' + ID;  
     }  
   });  
 }); 
 $(document).ready(function() {  
   $('.plan_delete').on('click', function(event) {
     event.preventDefault();
-    var email = $(this).attr('id');  
+    var ID = $(this).attr('id');  
     if (confirm('Are you sure you want to delete this post?')) {  
-      window.location.href = 'Event_requests.php?plan_delete=1&email=' + email;  
+      window.location.href = 'Event_requests.php?plan_delete=1&ID=' + ID;  
     }  
   });  
 }); 
  
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const updateButtons = document.querySelectorAll('.accept_participation_request');
     updateButtons.forEach(function(updateButton) {
         updateButton.addEventListener('click', function() {
-            const Email = this.getAttribute('id');
+            const ID = this.getAttribute('id');
             if (confirm('Are you sure you want to accept this request?')) {
-              window.location.href = `Event_requests.php?accept_participation_request=true&Email=${Email}`;
+              window.location.href = `Event_requests.php?accept_participation_request=true&ID=${ID}`;
             } else {
                 return false;
             }

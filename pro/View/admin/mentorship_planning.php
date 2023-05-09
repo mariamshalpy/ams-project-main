@@ -21,6 +21,8 @@ $mentorship_name = $_GET["name"];
 $mentorship_description = $_GET["description"];
 $mentorship_type = $_GET["type"];
 $mentorship_date = $_GET["date"];
+$mentorship_duration = $_GET["duration"];
+$ID = $_GET["id"];
  $program = new Program();
  $place =new Place();
  $handler =new Programhandler();
@@ -38,8 +40,9 @@ $mentorship_date = $_GET["date"];
                             $place->set_name(htmlspecialchars($_POST["place"]));
                             $place->set_date(htmlspecialchars($_POST["date"]));
                             $place->set_time_slot(htmlspecialchars($_POST["time"]));
+                            $r_handler->updateStatus($ID,'accepted');
                             $handler->add_program($program,$place);
-                            $r_handler->updateStatus($email,'accepted');
+                            
                           }
                     //   } 
                     
@@ -115,7 +118,7 @@ $mentorship_date = $_GET["date"];
                 <div class="col-lg-12">
                   <fieldset>
                    <label class="label_form" class="label_form">Duration:</label>
-                    <input type="text" name="duration"   required="">
+                   <input class="form-control" type="text" name ="duration" value="<?php echo htmlspecialchars($mentorship_duration); ?>"  />
                   </fieldset>
                 </div>
 

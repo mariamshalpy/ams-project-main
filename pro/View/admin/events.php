@@ -18,7 +18,7 @@ $data = new database();
   <title>AMS </title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../../View/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
   <!-- Additional CSS Files -->
@@ -104,22 +104,25 @@ https://templatemo.com/tm-586-scholar
     <div class="container">
       <div class="row">
         
-  <?php $post_data = $data->select('mentorshipprogram');
+  <?php 
+  $q='SELECT events.ID, events.name as eventname, `EventDescription`, place.Name as Place_name FROM `events`,`place` where events.PlaceId=place.ID;';
+  $post_data=mysqli_query($conn,$q);
+ 
  
   foreach ($post_data as $post): ?>
+
   <div class="col-lg-3 col-md-6 gy-4">
     <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><?php echo $post['Name']?></h5>
+    <h5 class="card-title"><?php echo $post['eventname']?></h5>
     <h6 class="card-subtitle mb-2 text-muted">Event</h6>
-    <p class="card-text"><?php echo $post['Description']?></p>
-    <a  name="participate" href="partcourse.php" class="btn btn-secondary">Participate</a>
+    <p   class="card-text"> <b>Description:</b><?php echo $post['EventDescription']?></p>
+    <p class="card-text"><b>PlaceName :</b><?php echo $post['Place_name']?></p>
+    <a  name="participate" href="partevent.php" class="btn btn-secondary">Participate</a>
+    
   </div>
-</div></div>
+</div></div>  
   <?php endforeach; ?></div></div></div>
-
-
-
 
 
 
@@ -131,13 +134,11 @@ https://templatemo.com/tm-586-scholar
       </div>
     </div>
   </footer>
-
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/js/isotope.min.js"></script>
   <script src="../assets/js/owl-carousel.js"></script>
   <script src="../assets/js/counter.js"></script>
   <script src="../assets/js/custom.js"></script>

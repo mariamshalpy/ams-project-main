@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+
 require '../../Controller/handler.php'; 
 $errMsg="update";
 $userid=$_SESSION['name']; 
@@ -86,9 +87,6 @@ if(isset($_POST['Edit']))
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                       <li class="scroll-to-section"><a href="home.php" class="active">Home</a></li>
-                      <li class="scroll-to-section"><a href="#services">Services</a></li>
-                      <li class="scroll-to-section"><a href="#courses">Courses</a></li>
-                      <li class="scroll-to-section"><a href="#events">Events</a></li>
                       <li class="scroll-to-section"><a href="../../Controller/logout.php">Log out</a></li>
                       <li class="scroll-to-section"><?php  if ($_SESSION['name']) {
                       	// code...

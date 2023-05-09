@@ -119,7 +119,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1">events</a>
                 <div class="dropdown1-content">
                 <a href="Event_requests.php">Manage events</a>  <!--add the correct path -->
-                <a href="">View Events</a>
+                <a href="events.php">View Events</a>
                 
                </div>
               </li>
@@ -131,7 +131,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> Faculty News</a>
                 <div class="dropdown1-content">
                 <a href="faculty_news.php">Manage Faculty News</a>   <!--add the correct path -->
-                <a href="">View Faculty News</a>
+                <a href="news.php">View Faculty News</a>
                </div>
               </li>
               </div>
@@ -142,7 +142,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> MenttorshipProgram</a>
                 <div class="dropdown1-content">
                 <a href="mentorship_requests.php">Manage Mentorship Programs </a>           <!--add the correct path -->
-                <a href="">View Mentorship Programs</a>
+                <a href="courses.php">View Mentorship Programs</a>
                </div>
               </li>
               </div>
@@ -163,7 +163,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> Job Posts</a>
                 <div class="dropdown1-content">
                 <a href="job_posts.php">Manage Job Posts</a>                  <!--add the correct path -->
-                <a href="">View Jop Posts</a>
+                <a href="jobposts.php">View Jop Posts</a>
                </div>
               </li>
               </div>

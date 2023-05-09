@@ -19,9 +19,7 @@ $success_message = '';
     <h3>Admin</h3>
                           <tr> 
                                <td >Questions</td>  
-                               <td >Answers</td>  
-                               <td >AdminId</td>  
-                               <td >Option</td>
+                               <td >Answers</td>
                           </tr>  
                           <?php
                           $faq_handler->getAllFaq();
