@@ -175,7 +175,7 @@ li.dropdown1 {
               <li class="dropdown1">
                 <a href="javascript:void(0)" class="dropbtn1">News</a>
                 <div class="dropdown1-content">
-                <a href="view_news.php">View News</a> >
+                <a href="view_news.php">View News</a> 
                 <a href="faculty_news.php">Manage News</a>
                </div>
               </li>
