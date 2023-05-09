@@ -142,7 +142,7 @@ li.dropdown1 {
               <li class="dropdown1">
                 <a href="javascript:void(0)" class="dropbtn1">Event</a>
                 <div class="dropdown1-content">
-                <a href=" ">View events</a>  <!--add the correct path -->
+                 <a href=" view_event.php">View events</a>  
                 <a href="Events.php">Manage Events</a>
                </div>
               </li>
