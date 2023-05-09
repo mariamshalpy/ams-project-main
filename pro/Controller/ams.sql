@@ -110,7 +110,7 @@ CREATE TABLE `alumni` (
 
 INSERT INTO `alumni` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`, `JobTitle`) VALUES
 (1, 'Menna', 'Hefny', 'menna@gmail.com', '33-mokkatam', '0000-00-00', '1234', '01094764271', 'Software engineer'),
-(2, 'mariam', '', 'mariaamali88@gmail.com', 'asas', '2023-03-31', '78787', '7895201', 'engineerrr');
+(2, 'mariam', 'Ali', 'mariaamali88@gmail.com', 'asas', '2023-03-31', '78787', '7895201', 'engineerrr');
 
 -- --------------------------------------------------------
 
@@ -131,31 +131,10 @@ CREATE TABLE `communication` (
 --
 
 INSERT INTO `communication` (`ID`, `email_to`, `email_from`, `content`, `role`) VALUES
-(1, 'menna@gmail.com', 'mariamali88@gmail.com', '', 'alumni'),
+(1, 'menna@gmail.com', 'mariamali88@gmail.com', 'hi', 'alumni'),
 (2, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(3, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(4, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(5, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(6, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(7, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(8, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(9, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(10, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(11, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(12, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(13, 'menna@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(14, 'y@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(15, 'y@gmail.com', 'mariamali88@gmail.com', 'hello', 'alumni'),
-(16, 'menna', 'mariam', 'hello', 'alumni'),
-(17, 'mariam', 'mariam', 'hi', 'alumni'),
-(18, 'mariam', 'soha', 'hello', 'alumni'),
-(19, 'menna', 'mariam', 'hi', 'student'),
-(20, 'amal', 'mariam', 'hello', 'alumni'),
-(21, 'menna', 'mariam', 'hello', 'alumni'),
-(22, 'mariam', 'menna', 'hello', 'alumni'),
-(23, 'mariam', 'marwan@gmail.com', 'hi ', 'student'),
-(24, 'marimshalpy123@gmail.com', 'marwan@gmail.com', 'hi ', 'student');
-
+(3, 'menna@gmail.com', 'marwan@gmail.com', 'hi ', 'alumni'),
+(4, 'mariam@gmail.com', 'marwan@gmail.com', 'hi ', 'student');
 -- --------------------------------------------------------
 
 --
@@ -167,7 +146,8 @@ CREATE TABLE `donation` (
   `alumni_email` varchar(50) NOT NULL,
   `Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+INSERT INTO `donation` (`ID`, `alumni_email`, `Amount`) VALUES
+(1, 'menna@gmail.com', '250');
 -- --------------------------------------------------------
 
 --
@@ -187,9 +167,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`ID`, `NumberOfAttendence`, `EventDescription`, `PlaceId`, `name`) VALUES
-(1, 30, 'good', 1, 'software'),
-(2, 1, 'aKJscdlkma', 1, 'reunion'),
-(3, 10, 'esarvesvf', 1, 'Java ');
+(1, 30, 'we will talk about software with experts', 1, 'software'),
+(2, 1, 'object orinted programming is very important for every one.', 1, 'oop'),
+(3, 10, 'Java is so easy and fun to learn.', 1, 'Java ');
 
 -- --------------------------------------------------------
 
@@ -212,9 +192,9 @@ CREATE TABLE `event_request` (
 --
 
 INSERT INTO `event_request` (`ID`, `Email`, `Type`, `date`, `Description`, `name`, `status`) VALUES
-(20, 'youssef@gmail.com', 'participate', '0000-00-00', 'wekmvcalkme', 'Java', 'pending'),
-(21, 'marwanali@gmail.com', 'plan', '2023-05-05', 'ezdvrzsd', 'C oop', 'pending'),
-(23, 'marwan@gmail.com', 'participate', '2023-05-08', '', 'ML', 'pending');
+(1, 'youssef@gmail.com', 'participate', '2023-05-08', '', 'Java', 'pending'),
+(2, 'marwanali@gmail.com', 'plan', '2023-05-05', 'object orinted programming with C language is very important for every one.', 'C oop', 'pending'),
+(3, 'marwan@gmail.com', 'participate', '2023-05-08', '', 'oop', 'pending');
 
 -- --------------------------------------------------------
 
@@ -234,9 +214,9 @@ CREATE TABLE `faculty_news_posts` (
 --
 
 INSERT INTO `faculty_news_posts` (`ID`, `Title`, `Content`, `CreatedAt`) VALUES
-(1, 'Top student of the year.', 'cdbfvdh eduifbsi fbvueiwb  cbwuebcicfiwb cibfcbcnwdfbicv fencifc', '2023-05-01'),
-(2, 'Top student of the year.', 'cdbfvdh eduifbsi fbvueiwb  cbwuebcicfiwb cibfcbcnwdfbicv fencifc', '2023-05-01'),
-(3, 'fcsd c afsefvdsv.', 'frgesrhb ndsb fbds , mjuvn h  bbuesciofaspvm', '2023-05-10');
+(1, 'Top student of the year.', 'Ahmmed won the award for the best university student of the year', '2023-05-01'),
+(2, 'Best doctor.', 'Dr. Amal won the award for the best university doctor of the year', '2023-05-01'),
+(3, 'New Magor.', 'We have opened a new magor in our faculty.', '2023-05-10');
 
 -- --------------------------------------------------------
 
@@ -255,10 +235,10 @@ CREATE TABLE `faq` (
 --
 
 INSERT INTO `faq` (`Questions`, `Answers`, `AdminId`) VALUES
-('how are you?', 'fine', 1),
-('what is your feedback?', 'very good', 1),
-('how are you?', 'fine', 1),
-('what is your feedback?', 'very good', 1);
+('Where can I find information on my academic program?', 'Please visit your Facultys site for information specific to your program. You can also contact your divisional registrar.', 1),
+('What services are available to me?', 'You have access to a range of student services.', 1),
+('Where can I go for human resources information?', 'If you work at U of T, more detailed information can be found within the HR Service Centre.', 1),
+('Do I need a vaccine to come to campus?', 'The University has paused the requirement for all members of our community to be fully vaccinated in order to come to campus.', 1);
 
 -- --------------------------------------------------------
 
@@ -278,7 +258,7 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`ID`, `name`, `content`, `role`) VALUES
-(1, 'mariam', 'very good', 'alumni'),
+(1, 'menna', 'very good', 'alumni'),
 (2, 'mariam', 'good', 'alumni'),
 (3, 'marwan', 'easy to use', 'student');
 
@@ -310,6 +290,8 @@ CREATE TABLE `job_posts` (
   `Title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `job_posts` (`ID`, `CompanyName`, `CreatedAt`, `JobDescription`, `Title`) VALUES
+(1, 'Vodafone', '2023-05-10', 'we need a good web developer.', 'Web Developer');
 -- --------------------------------------------------------
 
 --
@@ -330,7 +312,7 @@ CREATE TABLE `mentorshipprogram` (
 --
 
 INSERT INTO `mentorshipprogram` (`ID`, `Name`, `Type`, `Description`, `Duration`, `PlaceId`) VALUES
-(1, 'web developer', 'technicalcourse', 'good', '20', 1);
+(1, 'web developer', 'technicalcourse', 'we need a good web developer.', '20', 1);
 
 -- --------------------------------------------------------
 
@@ -374,12 +356,9 @@ CREATE TABLE `requesttomentorship` (
 --
 
 INSERT INTO `requesttomentorship` (`ID`, `Email`, `Name`, `Type`, `date`, `Description`, `status`, `Duration`) VALUES
-(4, 'marwan@gmail.com', 'web development', 'participate', '2023-05-08', '', 'pending', ''),
-(5, 'menna@gmail.com', 'evmenn', 'CareerBuild', '2023-05-09', 'jbnmbmn', 'pending', ''),
-(6, 'menna@gmail.com', 'lsdlsd', 'TechnicalCourse', '2023-06-03', '20hr', 'pending', ''),
-(8, 'menna@gmail.com', 'lllll', 'CareerBuild', '2023-06-03', 'klnk', 'pending', '20hrr'),
-(9, 'menna@gmail.com', 'aoo', 'CareerBuild', '2023-05-26', 'nl', 'pending', '20hr'),
-(10, 'menna@gmail.com', 'aoo', 'CareerBuild', '2023-05-27', 'lknl', 'pending', '20hrr');
+(1, 'marwan@gmail.com', 'web development', 'participate', '2023-05-08', '', 'pending', ''),
+(2, 'menna@gmail.com', 'evmenn', 'CareerBuild', '2023-05-09', 'jbnmbmn', 'pending', ''),
+(3, 'menna@gmail.com', 'lsdlsd', 'TechnicalCourse', '2023-06-03', '20hr', 'pending', '');
 
 -- --------------------------------------------------------
 
@@ -397,7 +376,8 @@ CREATE TABLE `staff` (
   `Password` varchar(50) NOT NULL,
   `PhoneNumber` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
+INSERT INTO `staff` (`ID`, `FirstName`, `LastName`, `Email`, `Address`, `BirthDate`, `Password`, `PhoneNumber`) VALUES
+(1, 'Saad', 'Mohammed', 'saad@gmail.com', 'mokkatam', '2002-02-05', '1234', '01094764271');
 -- --------------------------------------------------------
 
 --
@@ -703,7 +683,7 @@ ALTER TABLE `survey`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `alumni`
@@ -715,13 +695,13 @@ ALTER TABLE `alumni`
 -- AUTO_INCREMENT for table `communication`
 --
 ALTER TABLE `communication`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -733,7 +713,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_request`
 --
 ALTER TABLE `event_request`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `faculty_news_posts`
@@ -745,7 +725,7 @@ ALTER TABLE `faculty_news_posts`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `it_support_email`
@@ -757,7 +737,7 @@ ALTER TABLE `it_support_email`
 -- AUTO_INCREMENT for table `job_posts`
 --
 ALTER TABLE `job_posts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mentorshipprogram`
@@ -775,19 +755,19 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `requesttomentorship`
 --
 ALTER TABLE `requesttomentorship`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `support`
@@ -871,3 +851,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
