@@ -157,7 +157,7 @@ tr:nth-child(even) {
     margin-right: 630px;
     margin-bottom: 65px;
     margin-top: 100px;
-    color: #6953de;">Your Course Requests </h2>
+    color: #6953de;">Your Event Requests </h2>
 
                           <table>
   <tr>
