@@ -55,6 +55,8 @@ require_once "../../Controller/staff/jobHandler.php";
 
 <br>
 <br>
+<br>
+<br>
 <div class="features">
     <div class="container">
       <div class="row">
