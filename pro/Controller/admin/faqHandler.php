@@ -1,63 +1,43 @@
 <?php
 
 require_once '../../Controller/database.php';
- if(isset($_GET["delete"]))  
- {
-    $faqHandler = new FaqHandler;
-    $faqHandler->deleteQuestion();  
-        
- }  
- if(isset($_GET["deleted"]))  
- {  
-      $success_message = 'data deleted';  
- }  
+require_once '../../Model/faq.php';
+
 class FaqHandler{
 
 
+  public $faq;
 
-     
+  
+    
 
-     public function getAllFaq(){
-          $db = new database;
-          $post_data = $db->select('faq');
-  foreach($post_data as $post) {  
-    echo '<tr>';  
-    echo '<td>' . $post["Questions"] . '</td>';  
-    echo '<td>' . $post["Answers"] . '</td>';  
-    echo '<td>' . $post["AdminId"] . '</td>';  
-    echo '<td><button class="action-button"><a href="#" id="' . $post["Questions"] . '" class="delete"><i class="fas fa-trash delete-icon"></i></a></button></td>';  
-    echo '</tr>';  
-  }  
+    public function setFAQ(){
+      $db = new database;  
+      $this->faq = new Faq(); // create a new instance of Faq class
+        $this->faq->setQuestions('What is an alumni management system?');
+        $this->faq->setAnswers('An alumni management system is a software platform designed to help educational institutions manage their alumni relationships and communications. It typically includes features such as alumni databases, event management, fundraising tools, and communication channels such as email and social media.');
+        $data = array('Questions'=>$this->faq->getQuestions(),'Answers'=>$this->faq->getAnswers());
+        $db->insert('faq',$data);
+        
+      
+      }
+
+    public function getAllFaq(){
+        $db = new database;
+        $post_data = $db->select('faq');
+        foreach($post_data as $post) {  
+            echo '<tr>';  
+            echo '<td>' . $post["Questions"] . '</td>';  
+            echo '<td>' . $post["Answers"] . '</td>';  
+            echo '</tr>';  
+        }  
     }
 
-     public function deleteQuestion(){
-        $db =new database;
-         $where = array('Questions'=>$_GET["id"]);  
-       if($db->delete("faq", $where))  
-       {  
-            //header("location:mange_faq.php?deleted=1");  
-       }
-     }
 
-    
 
 
 }
 
 
+
 ?>
-<script>  
- $(document).ready(function(){  
-      $('.delete').click(function(){  
-           var question = $(this).attr("id");  
-           if(confirm("Are you sure you want to delete this post?"))  
-           {  
-                window.location = "mange_faq.php?delete=1&id="+question+"";  
-           }  
-           else  
-           {  
-                return false;  
-           }  
-      });  
- });  
- </script> 

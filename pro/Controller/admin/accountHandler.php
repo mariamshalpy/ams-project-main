@@ -7,7 +7,45 @@ require_once '../../Model/alumni.php';
 require_once '../../Model/student.php';
 require_once '../../Model/support.php';
 
+
 $account_handler = new AccountHandler;
+if(isset($_POST["update_admin"]))  
+{  
+     
+
+$account_handler->update_admin();
+
+}
+if(isset($_POST["update_alumni"]))  
+{  
+     
+
+$account_handler->update_alumni();
+
+}
+if(isset($_POST["update_student"]))  
+{  
+     
+
+$account_handler->update_student();
+
+}
+if(isset($_POST["update_staff"]))  
+{  
+     
+
+$account_handler->update_staff();
+
+}
+if(isset($_POST["update_support"]))  
+{  
+     
+
+$account_handler->update_support();
+
+}
+
+
 
 if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['address']) && isset($_POST['bdate']) && isset($_POST['password']) && isset($_POST['phonenumber']) && isset($_POST['jobtitle']) && isset($_POST['role'])) {
        if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['bdate']) && !empty($_POST['password']) && !empty($_POST['phonenumber']) && !empty($_POST['jobtitle'])&& !empty($_POST['role'])) {
@@ -226,7 +264,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                 echo '<td>' . $post["Email"] . '</td>';
                 echo '<td>' . $post["Password"] . '</td>';
                 echo '<td>';
-                echo '<button class="action-button"><a href="manage_accounts.php?edit=1&email=' . $post["Email"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
+                echo '<button class="action-button"><a href="edit_admin.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
                 echo '<button class="action-button"><a href="#" id="' . $post["Email"] . '" class="delete_admin"><i class="fas fa-trash delete-icon"></i></a></button>';
                 echo '</td>';
                 echo '</tr>';
@@ -315,7 +353,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                     echo '<td>' . $post["Password"] . '</td>';
                     echo '<td>' . $post["JobTitle"] . '</td>';
                     echo '<td>';
-                    echo '<button class="action-button"><a href="edit_accounts.php?edit=1&email=' . $post["Email"] . '" onclick="redirectToPage(event)"><i class="fas fa-edit edit-icon"></i></a></button>';
+                    echo '<button class="action-button"><a href="edit_student.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
                     echo '<button class="action-button"><a href="#" id="' . $post["Email"] . '" class="delete_student"><i class="fas fa-trash delete-icon"></i></a></button>';
                     echo '</td>';
                     echo '</tr>';
@@ -407,7 +445,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                 echo '<td>' . $post["PhoneNumber"] . '</td>';
                 echo '<td>' . $post["JobTitle"] . '</td>';
                 echo '<td>';
-                echo '<button class="action-button"><a href="manage_accounts.php?edit=1&email=' . $post["Email"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
+                echo '<button class="action-button"><a href="edit_alumni.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
                 echo '<button class="action-button"><a href="#" id="' . $post["Email"] . '" class="delete_alumni"><i class="fas fa-trash delete-icon"></i></a></button>';
                 echo '</td>';
                 echo '</tr>';
@@ -493,7 +531,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                  echo '<td>' . $post["Password"] . '</td>';
                  echo '<td>' . $post["PhoneNumber"] . '</td>';
                  echo '<td>';
-                 echo '<button class="action-button"><a href="manage_accounts.php?edit=1&email=' . $post["Email"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
+                 echo '<button class="action-button"><a href="edit_staff.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
                  echo '<button class="action-button"><a href="#" id="' . $post["Email"] . '" class="delete_staff"><i class="fas fa-trash delete-icon"></i></a></button>';
                  echo '</td>';
                  echo '</tr>';
@@ -647,7 +685,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                     echo '<td>' . $post["PhoneNumber"] . '</td>';
                     echo '<td>' . $post["JobTitle"] . '</td>';
                     echo '<td>';
-                    echo '<button class="action-button"><a href="manage_accounts.php?edit=1&email=' . $post["Email"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
+                    echo '<button class="action-button"><a href="edit_support.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
                     echo '<button class="action-button"><a href="#" id="' . $post["Email"] . '" class="delete_support"><i class="fas fa-trash delete-icon"></i></a></button>';
                     echo '</td>';
                     echo '</tr>';
@@ -684,6 +722,378 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
        }  
        
        
+
+      
+      
+       public function update_admin(){
+        $db = new database;
+$id = $_GET['ID'];
+         $update_data = array(  
+          
+          'FirstName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['FirstName'])),  
+          'LastName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['LastName'])),
+          'Email'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Email'])),
+          'Password'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['Password']))
+          
+        
+        );  
+        
+        $where_condition = array(
+          'ID' => $id
+      );
+    if($db->update("admin", $update_data, $where_condition))
+    {
+
+     
+
+    }
+      
+
+        }
+      
+       
+
+        public function edit_admin() {
+          $db = new database;
+          $id =  $_GET['ID'];
+          $where_condition = array('ID' => $id);
+          $select = $db->select_where('admin', $where_condition);
+          
+          foreach ($select as $s) {
+              echo '<div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="FirstName" placeholder="First Name..." value="' . $s['FirstName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="LastName" placeholder="Last Name..." value="' . $s['LastName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Email" placeholder="Email..." value="' . $s['Email'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="password" name="Password" placeholder="Password..." value="' . htmlspecialchars($s['Password']) . '">
+                        </fieldset>
+                        
+                      </div>';
+          }
+      }
+
+
+        public function update_alumni(){
+        $db = new database;
+$id = $_GET['ID'];
+         $update_data = array(  
+          
+          'FirstName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['FirstName'])),  
+          'LastName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['LastName'])),
+          'Email'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Email'])),
+          'Address'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Address'])),
+          'BirthDate'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['BirthDate'])),
+          'Password'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['Password'])),
+          'PhoneNumber'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['PhoneNumber'])),
+          'JobTitle'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['JobTitle']))
+          
+        
+        );  
+        
+        $where_condition = array(
+          'ID' => $id
+      );
+    if($db->update("alumni", $update_data, $where_condition))
+    {
+    }
+        }
+        public function update_student(){
+        $db = new database;
+$id = $_GET['ID'];
+         $update_data = array(  
+          
+          'FirstName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['FirstName'])),  
+          'LastName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['LastName'])),
+          'Email'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Email'])),
+          'Address'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Address'])),
+          'BirthDate'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['BirthDate'])),
+          'Password'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['Password'])),
+          'PhoneNumber'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['PhoneNumber'])),
+          'JobTitle'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['JobTitle']))
+          
+        
+        );  
+        
+        $where_condition = array(
+          'ID' => $id
+      );
+    if($db->update("student", $update_data, $where_condition))
+    {
+    }
+        }
+
+        public function edit_alumni() {
+          $db = new database;
+          $id =  $_GET['ID'];
+          $where_condition = array('ID' => $id);
+          $select = $db->select_where('alumni', $where_condition);
+          
+          foreach ($select as $s) {
+              echo '<div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="FirstName" placeholder="First Name..." value="' . $s['FirstName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="LastName" placeholder="Last Name..." value="' . $s['LastName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Email" placeholder="Email..." value="' . $s['Email'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="date" name="BirthDate" placeholder="Email..." value="' . htmlspecialchars($s['BirthDate']) . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="password" name="Password" placeholder="Password..." value="' . htmlspecialchars($s['Password']) . '">
+                          </fieldset>
+                          <div class="col-lg-12">
+                          <fieldset>
+                            <input type="text" name="PhoneNumber" placeholder="PhoneNumber..." value="' . $s['PhoneNumber'] . '" required="">
+                          </fieldset>
+                        </div>
+                        
+                          <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="JobTitle" placeholder="Email..." value="' . $s['JobTitle'] . '" required="">
+                        </fieldset>
+                      </div>
+                      </div>';
+          }
+      }
+        public function edit_student() {
+          $db = new database;
+          $id =  $_GET['ID'];
+          $where_condition = array('ID' => $id);
+          $select = $db->select_where('student', $where_condition);
+          
+          foreach ($select as $s) {
+              echo '<div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="FirstName" placeholder="First Name..." value="' . $s['FirstName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="LastName" placeholder="Last Name..." value="' . $s['LastName'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Email" placeholder="Email..." value="' . $s['Email'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="date" name="BirthDate" placeholder="Email..." value="' . htmlspecialchars($s['BirthDate']) . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                        </fieldset>
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                          <input type="password" name="Password" placeholder="Password..." value="' . htmlspecialchars($s['Password']) . '">
+                          </fieldset>
+                          <div class="col-lg-12">
+                          <fieldset>
+                            <input type="text" name="PhoneNumber" placeholder="PhoneNumber..." value="' . $s['PhoneNumber'] . '" required="">
+                          </fieldset>
+                        </div>
+                        
+                          <div class="col-lg-12">
+                        <fieldset>
+                          <input type="text" name="JobTitle" placeholder="Email..." value="' . $s['JobTitle'] . '" required="">
+                        </fieldset>
+                      </div>
+                      </div>';
+          }
+      }
+      
+       
+       public function update_staff(){
+        $db = new database;
+$id = $_GET['ID'];
+         $update_data = array(  
+          
+          'FirstName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['FirstName'])),  
+          'LastName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['LastName'])),
+          'Email'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Email'])),
+          'Address'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Address'])),
+          'BirthDate'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['BirthDate'])),
+          'Password'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['Password'])),
+          'PhoneNumber'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['PhoneNumber']))
+          
+        
+        );  
+        
+        $where_condition = array(
+          'ID' => $id
+      );
+    if($db->update("staff", $update_data, $where_condition))
+    {
+    }
+        }
+      
+      
+      
+       public function edit_staff() {
+        $db = new database;
+        $id =  $_GET['ID'];
+        $where_condition = array('ID' => $id);
+        $select = $db->select_where('staff', $where_condition);
+        
+        foreach ($select as $s) {
+            echo '<div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="FirstName" placeholder="First Name..." value="' . $s['FirstName'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="LastName" placeholder="Last Name..." value="' . $s['LastName'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="Email" placeholder="Email..." value="' . $s['Email'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="date" name="BirthDate" placeholder="Email..." value="' . htmlspecialchars($s['BirthDate']) . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="password" name="Password" placeholder="Password..." value="' . htmlspecialchars($s['Password']) . '">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="PhoneNumber" placeholder="PhoneNumber..." value="' . htmlspecialchars($s['PhoneNumber']) . '" required="">
+                      </fieldset>
+                    </div>
+                    </div>';
+        }
+    }
+       public function update_support(){
+        $db = new database;
+$id = $_GET['ID'];
+         $update_data = array(  
+          
+          'FirstName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['FirstName'])),  
+          'LastName'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['LastName'])),
+          'Email'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Email'])),
+          'Address'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['Address'])),
+          'BirthDate'=>mysqli_real_escape_string($db->con, htmlspecialchars($_POST['BirthDate'])),
+          'Password'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['Password'])),
+          'PhoneNumber'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['PhoneNumber'])),
+          'JobTitle'=>mysqli_real_escape_string($db->con,htmlspecialchars($_POST['JobTitle']))
+          
+        
+        );  
+        
+        $where_condition = array(
+          'ID' => $id
+      );
+    if($db->update("support", $update_data, $where_condition))
+    {
+    }
+        }
+      
+      
+      
+       public function edit_support() {
+        $db = new database;
+        $id =  $_GET['ID'];
+        $where_condition = array('ID' => $id);
+        $select = $db->select_where('support', $where_condition);
+        
+        foreach ($select as $s) {
+            echo '<div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="FirstName" placeholder="First Name..." value="' . $s['FirstName'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="LastName" placeholder="Last Name..." value="' . $s['LastName'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="Email" placeholder="Email..." value="' . $s['Email'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="Address" placeholder="Email..." value="' . $s['Address'] . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="date" name="BirthDate" placeholder="Email..." value="' . htmlspecialchars($s['BirthDate']) . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="password" name="Password" placeholder="Password..." value="' . htmlspecialchars($s['Password']) . '">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="PhoneNumber" placeholder="PhoneNumber..." value="' . htmlspecialchars($s['PhoneNumber']) . '" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="text" name="JobTitle" placeholder="JobTitle..." value="' . htmlspecialchars($s['JobTitle']) . '" required="">
+                      </fieldset>
+                    </div>
+                    </div>';
+        }
+    }
           
 
 
