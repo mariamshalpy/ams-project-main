@@ -134,7 +134,7 @@ li.dropdown1 {
 
               <li class="scroll-to-section"><a href="home.php" class="active">Home</a></li>
 
-                              <!--still working on add ALumni-->
+                            
               <li class="scroll-to-section"><a href="accounts.php">Add Alumni</a></li>
 
                               <!--Event :DONE-->
@@ -175,7 +175,7 @@ li.dropdown1 {
               <li class="dropdown1">
                 <a href="javascript:void(0)" class="dropbtn1">News</a>
                 <div class="dropdown1-content">
-                <a href="">View News</a>                  <!--add the correct path -->
+                <a href="view_news.php">View News</a> >
                 <a href="faculty_news.php">Manage News</a>
                </div>
               </li>
