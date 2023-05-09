@@ -143,7 +143,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                             'Address' =>mysqli_real_escape_string($db->con, $new_student->getAddress()),
                             'BirthDate' =>mysqli_real_escape_string($db->con, $new_student->getBirthDate()),
                             'Password'=>mysqli_real_escape_string($db->con, $new_student->getPassword()),  
-                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_student->getPassword()),  
+                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_student->getPhoneNumber()),  
                             'JobTitle'=>mysqli_real_escape_string($db->con, $new_student->getJobTitle()));  
                        if($db->insert('student', $insert_data))  
                        {  
@@ -159,25 +159,25 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                 {
                      $new_alumni = new Alumni;
 
-                     $new_alumni->FirstName = $_POST['firstname'];
-                     $new_alumni->LastName = $_POST['lastname'];
-                     $new_alumni->Email = $_POST['email'];
-                     $new_alumni->Address = $_POST['address'];
-                     $new_alumni->BirthDate = $_POST['bdate'];
-                     $new_alumni->Password = $_POST['password'];
-                     $new_alumni->PhoneNumber = $_POST['phonenumber'];
-                     $new_alumni->JobTitle = $_POST['jobtitle'];
+                     $new_alumni->set_first_name($_POST['firstname']);
+                     $new_alumni->set_last_name($_POST['lastname']);
+                     $new_alumni->set_email($_POST['email']);
+                     $new_alumni->set_address($_POST['address']);
+                     $new_alumni->set_birth_date($_POST['bdate']);
+                     $new_alumni->set_password($_POST['password']);
+                     $new_alumni->set_phone($_POST['phonenumber']);
+                     $new_alumni->set_job_title($_POST['jobtitle']);
     
                     $insert_data = array(  
                             'ID'=>'',  
-                            'FirstName'=>mysqli_real_escape_string($db->con, $new_alumni->FirstName),
-                            'LastName'=>mysqli_real_escape_string($db->con, $new_alumni->LastName),
-                            'Email' =>mysqli_real_escape_string($db->con, $new_alumni->Email),
-                            'Address' =>mysqli_real_escape_string($db->con, $new_alumni->Address),
-                            'BirthDate' =>mysqli_real_escape_string($db->con, $new_alumni->BirthDate),
-                            'Password'=>mysqli_real_escape_string($db->con, $new_alumni->Password),  
-                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_alumni->PhoneNumber),  
-                            'JobTitle'=>mysqli_real_escape_string($db->con, $new_alumni->JobTitle));  
+                            'FirstName'=>mysqli_real_escape_string($db->con, $new_alumni->get_first_name()),
+                            'LastName'=>mysqli_real_escape_string($db->con, $new_alumni->get_last_name()),
+                            'Email' =>mysqli_real_escape_string($db->con, $new_alumni->get_email()),
+                            'Address' =>mysqli_real_escape_string($db->con, $new_alumni->get_address()),
+                            'BirthDate' =>mysqli_real_escape_string($db->con, $new_alumni->get_birth_date()),
+                            'Password'=>mysqli_real_escape_string($db->con, $new_alumni->get_password()),  
+                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_alumni->get_phone()),  
+                            'JobTitle'=>mysqli_real_escape_string($db->con, $new_alumni->get_jobTitle()));  
                        if($db->insert('alumni', $insert_data))  
                        {  
                         $success_message = 'data inserted';
@@ -192,24 +192,24 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                 if(isset($_POST["add"]))  
                 {
                      $new_support = new support;
-                     $new_support->FirstName = $_POST['firstname'];
-                     $new_support->LastName = $_POST['lastname'];
-                     $new_support->Email = $_POST['email'];
-                     $new_support->Address = $_POST['address'];
-                     $new_support->BirthDate = $_POST['bdate'];
-                     $new_support->Password = $_POST['password'];
-                     $new_support->PhoneNumber = $_POST['phonenumber'];
+                     $new_support->set_first_name($_POST['firstname']);
+                     $new_support->set_last_name($_POST['lastname']);
+                     $new_support->set_email($_POST['email']);
+                     $new_support->set_address($_POST['address']);
+                     $new_support->set_birth_date($_POST['bdate']);
+                     $new_support->set_password($_POST['password']);
+                     $new_support->set_phone($_POST['phonenumber']);
     
                     $insert_data = array(  
                             'ID'=>'',  
-                            'FirstName'=>mysqli_real_escape_string($db->con, $new_support->FirstName),
-                            'LastName'=>mysqli_real_escape_string($db->con, $new_support->LastName),
-                            'Email' =>mysqli_real_escape_string($db->con, $new_support->Email),
-                            'Address' =>mysqli_real_escape_string($db->con, $new_support->Address),
-                            'BirthDate' =>mysqli_real_escape_string($db->con, $new_support->BirthDate),
-                            'Password'=>mysqli_real_escape_string($db->con, $new_support->Password),  
-                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_support->PhoneNumber),  
-                            'JobTitle'=>mysqli_real_escape_string($db->con, $new_support->JobTitle));  
+                            'FirstName'=>mysqli_real_escape_string($db->con, $new_support->get_first_name()),
+                            'LastName'=>mysqli_real_escape_string($db->con, $new_support->get_last_name()),
+                            'Email' =>mysqli_real_escape_string($db->con, $new_support->get_email()),
+                            'Address' =>mysqli_real_escape_string($db->con, $new_support->get_address()),
+                            'BirthDate' =>mysqli_real_escape_string($db->con, $new_support->get_birth_date()),
+                            'Password'=>mysqli_real_escape_string($db->con, $new_support->get_password()),  
+                            'PhoneNumber'=>mysqli_real_escape_string($db->con, $new_support->get_phone()),  
+                            'JobTitle'=>mysqli_real_escape_string($db->con, $new_support->get_jobTitle()));  
                        if($db->insert('support', $insert_data))  
                        {  
                         $success_message = 'data inserted';
@@ -229,7 +229,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                      $new_staff->setAddress($_POST['address']);
                      $new_staff->setBirthDate($_POST['bdate']);
                      $new_staff->setPassword($_POST['password']);
-                     $new_staff->setPassword($_POST['phonenumber']);
+                     $new_staff->setPhoneNumber($_POST['phonenumber']);
     
                     $insert_data = array(  
                             'ID'=>'',  
@@ -349,8 +349,8 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                     echo '<td>' . $post["Email"] . '</td>';
                     echo '<td>' . $post["Address"] . '</td>';
                     echo '<td>' . $post["BirthDate"] . '</td>';
-                    echo '<td>' . $post["PhoneNumber"] . '</td>';
                     echo '<td>' . $post["Password"] . '</td>';
+                    echo '<td>' . $post["PhoneNumber"] . '</td>';
                     echo '<td>' . $post["JobTitle"] . '</td>';
                     echo '<td>';
                     echo '<button class="action-button"><a href="edit_student.php?edit=1&ID=' . $post["ID"] . '"><i class="fas fa-edit edit-icon"></i></a></button>';
@@ -373,7 +373,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
               
                     $values = $_GET['student_search'];
                  
-                  $query= "SELECT * FROM student WHERE CONCAT(FirstName,LastName,Email,Address,BirthDate,PhoneNumber,Password,JobTitle)
+                  $query= "SELECT * FROM student WHERE CONCAT(FirstName,LastName,Email,Address,BirthDate,Password,PhoneNumber,JobTitle)
                     LIKE '%$values%'";
                     $query_run = mysqli_query($db->con,$query);
                   
@@ -390,8 +390,8 @@ if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['ema
                              echo '<td>' . $s["Email"] . '</td>';
                              echo '<td>' . $s["Address"] . '</td>';
                              echo '<td>' . $s["BirthDate"] . '</td>';
-                             echo '<td>' . $s["PhoneNumber"] . '</td>';
                              echo '<td>' . $s["Password"] . '</td>';
+                             echo '<td>' . $s["PhoneNumber"] . '</td>';
                             echo '<td>' . $s["JobTitle"] . '</td>';
                            
                             
