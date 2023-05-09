@@ -162,7 +162,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> Job Posts</a>
                 <div class="dropdown1-content">
                 <a href="job_posts.php">Manage Job Posts</a>                  <!--add the correct path -->
-                <a href="view_job_post.php">View Jop Posts</a>
+                <a href="view_job_post.php">View Job Posts</a>
                </div>
               </li>
               </div>

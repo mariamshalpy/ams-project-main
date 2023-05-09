@@ -198,7 +198,7 @@ li.dropdown1 {
           </a>
         </div>
         <div class="col-lg-3 col-md-6">
-          <a href="view_news.php">
+          <a href="faculty_news.php">
             <div class="item">
               <div class="image">
                 <img src="../../View/assets/images/admin/newspaper-folded.png" alt="" style="max-width: 44px;">
