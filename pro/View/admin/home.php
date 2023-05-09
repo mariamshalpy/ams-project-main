@@ -188,7 +188,7 @@ li.dropdown1 {
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <a href="../../View/alumni/home.php"> 
+          <a href="view_donations.php"> 
             <div class="item">
               <div class="image">
                 <img src="../../View/assets/images/admin/charity-donation.png" alt="" style="max-width: 44px;">
@@ -198,7 +198,7 @@ li.dropdown1 {
           </a>
         </div>
         <div class="col-lg-3 col-md-6">
-          <a href="./faculty_news.php">
+          <a href="view_news.php">
             <div class="item">
               <div class="image">
                 <img src="../../View/assets/images/admin/newspaper-folded.png" alt="" style="max-width: 44px;">
@@ -232,7 +232,7 @@ li.dropdown1 {
           </a>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <!-- <div class="col-lg-3 col-md-6">
           <a href="./Event_requests.php">
             <div class="item">
               <div class="image">
@@ -241,7 +241,7 @@ li.dropdown1 {
               <h4>Requests</h4>
             </div>
           </a>
-        </div>
+        </div> -->
 
         <div class="col-lg-3 col-md-6">
           <a href="./manage_accounts.php">

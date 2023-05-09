@@ -111,7 +111,7 @@ li.dropdown1 {
               <li class="scroll-to-section"><a href="home.php" class="active">Home</a></li>
 
                               <!--still working on add ALumni-->
-              <li class="scroll-to-section"><a href="donations.php">donations</a></li>
+              <li class="scroll-to-section"><a href="view_donations.php">donations</a></li>
 
                               <!--DONE-->
               <div  class="scroll-to-section" >
@@ -119,7 +119,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1">events</a>
                 <div class="dropdown1-content">
                 <a href="Event_requests.php">Manage events</a>  <!--add the correct path -->
-                <a href="events.php">View Events</a>
+                <a href="view_event.php">View Events</a>
                 
                </div>
               </li>
@@ -131,7 +131,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> Faculty News</a>
                 <div class="dropdown1-content">
                 <a href="faculty_news.php">Manage Faculty News</a>   <!--add the correct path -->
-                <a href="news.php">View Faculty News</a>
+                <a href="view_news.php">View Faculty News</a>
                </div>
               </li>
               </div>
@@ -142,7 +142,7 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> MenttorshipProgram</a>
                 <div class="dropdown1-content">
                 <a href="mentorship_requests.php">Manage Mentorship Programs </a>           <!--add the correct path -->
-                <a href="courses.php">View Mentorship Programs</a>
+                <a href="view_mentorship.php">View Mentorship Programs</a>
                </div>
               </li>
               </div>
@@ -152,8 +152,7 @@ li.dropdown1 {
               <li class="dropdown1">
                 <a href="javascript:void(0)" class="dropbtn1">Accounts</a>
                 <div class="dropdown1-content">
-                <a href="manage_accounts.php">Manage Accounts</a>                  <!--add the correct path -->
-                <a href="">View Accounts</a>
+                <a href="manage_accounts.php">Manage Accounts</a>
                </div>
               </li>
               </div>
@@ -163,12 +162,12 @@ li.dropdown1 {
                 <a href="javascript:void(0)" class="dropbtn1"> Job Posts</a>
                 <div class="dropdown1-content">
                 <a href="job_posts.php">Manage Job Posts</a>                  <!--add the correct path -->
-                <a href="jobposts.php">View Jop Posts</a>
+                <a href="view_job_post.php">View Jop Posts</a>
                </div>
               </li>
               </div>
 
-              <li class="scroll-to-section"><a href="requests.php">Requests</a></li>
+              
 
                           <!--still working on survey-->
              

@@ -1,7 +1,7 @@
 <?php 
 require_once 'header.php';
 require_once "../../Model/News.php";
-require_once '../../Controller/admin/newshandler.php';
+require_once '../../Controller/admin/newsHandler.php';
 
 
 
