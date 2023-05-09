@@ -151,8 +151,8 @@ if(isset($_POST['send']))
                     <select class="form-select mb-3"
 		          name="type" 
 		          aria-label="Default select example">
-			  <option selected value="CareerBuild">CareerBuild</option>
-			  <option value="TechnicalCourse">TechnicalCourse</option>
+			  <option selected value="Careerbuild">Careerbuild</option>
+			  <option value="Technical course">Technical course</option>
               
                     </select>
         
