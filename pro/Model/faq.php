@@ -1,9 +1,7 @@
 <?php
-class Account {
-    private $Questions;
-    private $Answers;
-    private $AdminId;
-
+class Faq {
+    private $Questions ;
+    private $Answers ;
     public function setQuestions($Questions){
         $this->Questions = $Questions;
     }
@@ -16,12 +14,7 @@ class Account {
     public function getAnswers(){
         return $this->Answers ;
     }
-    public function setAdminId($AdminId){
-        $this->AdminId = $AdminId;
-    }
-    public function getAdminId(){
-        return $this->AdminId ;
-    }
+    
 
 }
 ?>
