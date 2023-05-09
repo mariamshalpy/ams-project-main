@@ -153,16 +153,22 @@ li.dropdown1 {
   <div class="main-banner" id="top">
     <div class="container">
       <div class="row">
-       
+        <div class="col-lg-16">
+          <div class="owl-carousel owl-banner">
+
+            <div class="header-text">
+
+
+
+
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   <div class="features">
     <div class="container">
       <div class="row">
@@ -210,7 +216,7 @@ li.dropdown1 {
             <br>
             <br>
             <br>
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-md-6 gy-5">
           <a href="./mentorship_requests.php">
             <div class="item">
               <div class="image">
@@ -221,7 +227,7 @@ li.dropdown1 {
           </a>
         </div>
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-md-6 gy-5">
           <a href="./job_posts.php">
             <div class="item">
               <div class="image">
@@ -232,18 +238,9 @@ li.dropdown1 {
           </a>
         </div>
 
-        <!-- <div class="col-lg-3 col-md-6">
-          <a href="./Event_requests.php">
-            <div class="item">
-              <div class="image">
-                <img src="../../View/assets/images/admin/email.png" alt="" style="max-width: 44px;">
-              </div>
-              <h4>Requests</h4>
-            </div>
-          </a>
-        </div> -->
+   
 
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-md-6 gy-5">
           <a href="./manage_accounts.php">
             <div class="item">
               <div class="image">
