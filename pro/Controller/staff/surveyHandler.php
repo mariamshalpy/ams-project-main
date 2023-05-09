@@ -29,7 +29,18 @@ class Surveyhandler{
         }
    
         
-      
+        public function get_number(){
+       
+          $handler =new Surveyhandler();
+          $data = $handler->selcet_survey();
+          $count=0;
+          foreach($data as $survey){
+
+                $count++;
+          }
+          return $count;
+        }
+   
 
 
     }             
