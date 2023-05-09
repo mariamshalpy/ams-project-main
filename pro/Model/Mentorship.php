@@ -7,9 +7,6 @@ class Program {
   private $description;
   private $duration;
   private $placeId;
-  //private $place;
-  //private $time_slot;
-  //private $Date;
 
  
 
